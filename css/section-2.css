@@ -1,0 +1,10 @@
+.section-2-container {width: 100%; max-width: 1280px;
+    margin: 0 auto; padding: 1rem 1rem; 
+    display: flex; flex-wrap: wrap;
+    justify-content: space-evenly;}
+.region {display: flex; flex-direction: column; align-items: center;
+    padding: 0.5rem 1rem;}
+.region img {width: 7rem; object-fit: cover;}
+.region img:hover {transform: scale(1.1); transition: 0.3s;}
+.region span {font-size: 1.25rem; 
+    font-family: "DNFBitBitv2"; color: #353535;}
