@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/index.css" type="text/css" />
-    <link rel="stylesheet" href="./css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/index.css" type="text/css" />
+    <link rel="stylesheet" href="css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/section-1.css" type="text/css" />
     <!-- JS -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <title>DOGETHER</title>
 </head>
 <body>
-    <header>
+    <header id="header">
     <script>
         fetch('header.html')
             .then(response => response.text())
@@ -20,5 +21,13 @@
             });
     </script>
     </header>
+    <section id="section-1">
+        <div class="main-bg-img">
+            <div class="section-1-container">
+                <p>WITH DOGETHER</p>
+                <p>반려견과 동반 가능한 <span>식당, 숙소, 카페</span>를 찾아보세요!</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
