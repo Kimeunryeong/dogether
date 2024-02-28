@@ -1,0 +1,7 @@
+#header {width: 100%;}
+.header-container {width: 100%; max-width: 1280px; margin: 0 auto; padding: 0.5rem 1rem;
+    display: flex; justify-content: space-between; align-items: center;}
+#logo img {width: 4rem;}
+
+#menu ul {display: flex;}
+#menu ul li {padding-left: 1.5rem; font-size: 1.25rem;}

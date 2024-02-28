@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+body {
+  font-family: "NotoSansKR-Regular";
+}
+:root {
+  --font-transition: font-size 0.5s ease;
+  --height-transition: height 0.5s ease;
+  --width-transition: width 0.5s ease;
+}
+@font-face {
+  font-family: "DNFBitBitv2";
+  src: url("../fonts/DNFBitBitv2.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NotoSansKR-Regular";
+  src: url("../fonts/NotoSansKR-Regular.ttf") format("truetype");
+}
