@@ -12,11 +12,11 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 /* 메인 이미지 안 텍스트 컨테이너 */
 .section-1-container {
-    width: 100%; height: 50%;
+    width: 100%; height: 50%; transition: var(--height-transition);
     max-width: 1280px; margin: 0 auto; padding: 0 1rem;
     display: flex; flex-direction: column;
     justify-content: center; align-items: center;
@@ -25,17 +25,38 @@
 .section-1-container p:nth-child(1) {
     z-index: 99;
     font-family: "DNFBitBitv2";
-    color: #fff;
-    font-size: 4rem;
+    color: #DA6A00;
+    padding-bottom: 1rem;
+    font-size: 4.5rem; transition: var(--font-transition);
+}
+    /* 첫번째 문구 - WITH */
+.section-1-container p:nth-child(1) > span {
+    color: #F6F6F6;
 }
     /* 두번째 문구 */
 .section-1-container p:nth-child(2) {
     z-index: 99;
-    color: #fff;
-    font-size: 1.5rem;
+    color: #F6F6F6;
+    font-size: 1.5rem; transition: var(--font-transition);
 }
 .section-1-container p:nth-child(2) > span {
-    color: #DA6A00;
+    color: #F6F6F6;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.5rem; transition: var(--font-transition);
+}
+
+@media screen and (max-width: 768px) {
+    .section-1-container {
+        height: 100%;
+    }
+    .section-1-container p:nth-child(1) {
+        font-size: 3rem;
+    }
+    .section-1-container p:nth-child(2) {
+        font-size: 1.25rem;
+    }
+    .section-1-container p:nth-child(2) > span {
+        font-size: 1.75rem;
+    }
+    
 }
