@@ -6,6 +6,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css" type="text/css" />
     <link rel="stylesheet" href="css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/footer.css" type="text/css" />
     <link rel="stylesheet" href="css/section-1.css" type="text/css" />
     <link rel="stylesheet" href="css/section-2.css" type="text/css" />
     <!-- JS -->
@@ -36,6 +37,16 @@
         </div>
       </div>
     </section>
+        <!-- 푸터 -->
+        <footer>
+          <script>
+            fetch("footer.html")
+              .then((response) => response.text())
+              .then((html) => {
+                document.querySelector("footer").innerHTML = html;
+              });
+          </script>
+        </footer>
     <script src="js/api.js"></script>
   </body>
   <script src="./js/api.js"></script>
