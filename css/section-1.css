@@ -1,30 +1,52 @@
-#section-1 {width: 100%; height: calc(100vh - 100px);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right;
-    background-image: url("../images/main.png");
-    background-color: #F3F3F5;
-    position: relative;}
+#section-1 {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-image: url("../images/main.png");
+  background-color: #f3f3f5;
+  position: relative;
+}
 #section-1::after {
-    content: "";
-    width: 100%; height: 100%;
-    position: absolute; top: 0; left: 0;
-    background-color: #F3F3F570;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f3f3f570;
 }
 /* 메인 컨테이너 */
 .section-1-container {
-    width: 100%; height: 100%;
-    max-width: 1024px;
-    padding: 0 1rem; margin: 0 auto;
-    display: flex;
-    }
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  padding: 0 1rem;
+  margin: 0 auto;
+  display: flex;
+}
 /* 메인 설명 */
-.section-1-container .main-text {z-index: 99; font-size: 1.5rem; text-align: start;}
+.section-1-container .main-text {
+  z-index: 99;
+  font-size: 1.5rem;
+  text-align: start;
+}
 /* LET'S DOGETHER */
-.section-1-container p:nth-child(1) {font-size: 5rem; font-weight: bold;
-    color: #EE9B01; padding-top: 5rem;}
-.section-1-container P:nth-child(2) b {font-size: 2rem; color: #DA6A00;}
-.section-1-container p:nth-child(3) {font-size: 1.25rem; color: gray;}
+.section-1-container p:nth-child(1) {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ee9b01;
+  padding-top: 5rem;
+}
+.section-1-container P:nth-child(2) b {
+  font-size: 2rem;
+  color: #da6a00;
+}
+.section-1-container p:nth-child(3) {
+  font-size: 1.25rem;
+  color: gray;
+}
 
 @media screen and (max-width: 768px) {
 }

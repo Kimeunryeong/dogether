@@ -29,21 +29,81 @@
       <div class="section-1-container">
         <div class="main-text">
           <p>LET'S<br />DOGETHER!</p>
-          <p>반려견과 동반 가능한 <b>식당, 카페, 숙소</b>를 찾아보세요.<br/></p>
+          <p>
+            반려견과 동반 가능한 <b>식당, 카페, 숙소</b>를 찾아보세요.<br />
+          </p>
           <p>DOGTHER는 여러분과 함께 만들어가는 커뮤니티입니다.</p>
         </div>
       </div>
     </section>
-        <!-- 푸터 -->
-        <footer>
-          <script>
-            fetch("footer.html")
-              .then((response) => response.text())
-              .then((html) => {
-                document.querySelector("footer").innerHTML = html;
-              });
-          </script>
-        </footer>
+    <!-- 섹션-2 메인 이미지 -->
+    <section id="section-2">
+      <div class="max">
+        <div class="main-text1">
+          <p class="title-list">DOGETHER!</p>
+          <p class="">제공 리스트</p>
+        </div>
+        <div class="listflex">
+          <div class="main-list1">
+            <div>
+              <a href="detail.html?dataId=동남아시아">
+                <p class="subtitbe">동물병원</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+            <div>
+              <a href="detail.html?dataId=미용">
+                <p class="subtitbe">미용</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+            <div>
+              <a href="detail.html?dataId=카페">
+                <p class="subtitbe">카페</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+          </div>
+          <div class="main-list1">
+            <div>
+              <a href="detail.html?dataId=동남아시아">
+                <p class="subtitbe">펫 용품점</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+            <div>
+              <a href="detail.html?dataId=미용">
+                <p class="subtitbe">음식</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+            <div>
+              <a href="detail.html?dataId=카페">
+                <p class="subtitbe">숙소</p>
+                <p class="text">text</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-bg-img2">
+        <div class="section-2-container"></div>
+      </div>
+
+      <div class="section-2-list">
+        <div class="main-text2"></div>
+      </div>
+    </section>
+    <!-- 푸터 -->
+    <footer>
+      <script>
+        fetch("footer.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.querySelector("footer").innerHTML = html;
+          });
+      </script>
+    </footer>
     <script src="js/api.js"></script>
   </body>
   <script src="./js/api.js"></script>
