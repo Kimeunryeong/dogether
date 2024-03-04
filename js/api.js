@@ -168,21 +168,32 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   hotelData();
 
-  // 카페 데이터
-  const cafeData = () => {
+  // 카페, 미술관, 미용, 약국, 병원 데이터
+  const etcData = () => {
     fetch("../json/cafe.json")
       .then((response) => response.json())
       .then((data) => {
-        let cafe = [];
+        let cafe = []; // 카페
+        let gallery = []; // 미술관
+        let beauty = []; // 미용
+        let pharmacy = []; // 약국
+        let hospital = []; // 병원
         data?.forEach((item) => {
           item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
+          item.CTGRY_THREE_NM?.includes("미술관") && gallery.push(item);
+          item.CTGRY_THREE_NM?.includes("미용") && beauty.push(item);
+          item.CTGRY_THREE_NM?.includes("약국") && pharmacy.push(item);
+          item.CTGRY_THREE_NM?.includes("병원") && hospital.push(item);
         });
         console.log("카페", cafe);
-        // console.log(data);
+        console.log("미술관", gallery);
+        console.log("미용", beauty);
+        console.log("약국", pharmacy);
+        console.log("병원", hospital);
       })
       .catch((error) => {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-  cafeData();
+  etcData();
 });
