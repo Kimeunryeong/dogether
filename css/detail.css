@@ -11,7 +11,8 @@
 }
 .detail-img {
   background-image: url("../images/pit-a-pat.svg");
-  width: 100%;
-  height: 100%;
+  width: 480px;
+  height: 160px;
+  background-position: center;
   background-repeat: no-repeat;
 }
