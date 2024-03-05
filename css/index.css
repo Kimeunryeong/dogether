@@ -33,6 +33,8 @@ a {
 }
 body {
   font-family: "NotoSansKR-Regular";
+  background-color: #f2ecdf;
+
 }
 :root {
   --font-transition: font-size 0.5s ease;
