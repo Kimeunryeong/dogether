@@ -36,6 +36,11 @@
   font-size: 1.25rem;
   color: gray;
 }
+/* 버튼 */
+.section-2-move {margin: 2rem 0;}
+.section-2-move a {display: block; padding: 1rem 2rem;
+width: fit-content; background-color: #14471E; color: #fff;
+border-radius: 1rem;}
 
 @media screen and (max-width: 768px) {
 }
