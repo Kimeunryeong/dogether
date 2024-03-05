@@ -2,55 +2,73 @@
 #section-2 {
   width: 100%;
   height: 100vh;
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   background-color: #f2ecdf;
-
 }
 .section-2-container {
-  width: 100%; height: 50%;
-  max-width: 1024px; margin: 0 auto;
+  width: 100%;
+  height: 50%;
+  max-width: 1024px;
+  margin: 0 auto;
   padding: 0 1rem;
-  display: flex; justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
   z-index: 100;
 }
 .section-2-main-text {
   width: 50%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #section-2 > .section-2-container:nth-child(1) .section-2-main-text {
   background-image: url("../images/main-2-img.svg");
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
 }
 #section-2 > .section-2-container:nth-child(2) .section-2-main-text {
   background-image: url("../images/main-2-img-2.svg");
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .listbox {
   width: 50%;
-  display: flex; justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .section-2-list {
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .section-2-main-text {
   font-size: 2rem;
 }
 .section-2-main-text b {
-  color: #DA6A00;
+  color: #da6a00;
 }
-.section-2-list div {width: 100%;}
-.section-2-list div a p:nth-child(1) {font-size: 2rem;}
-.section-2-list div a p:nth-child(2) {font-size: 1.5rem;}
-.section-2-list i {color: #EE9B01; font-size: 2rem;}
+.section-2-list div {
+  width: 100%;
+}
+.section-2-list div a p:nth-child(1) {
+  font-size: 2rem;
+}
+.section-2-list div a p:nth-child(2) {
+  font-size: 1.5rem;
+}
+.section-2-list i {
+  color: #ee9b01;
+  font-size: 2rem;
+}
 
 @media screen and (max-width: 768px) {
-
 }

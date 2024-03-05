@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/detail.css" type="text/css" />
+    <link rel="stylesheet" href="css/index.css" type="text/css" />
+    <link rel="stylesheet" href="css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/footer.css" type="text/css" />
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4bae9c95198a725f932a1e32a9cad1f"
+    ></script>
+    <title>DOGETHER</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <script>
+        fetch("header.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.querySelector("header").innerHTML = html;
+          });
+      </script>
+    </header>
+    <section id="detail-section">
+      <div class="detail-title"></div>
+      <div class="detail-img"></div>
+      <div id="map" style="width: 100%; height: 400px"></div>
+    </section>
+    <!-- map -->
+
+    <!-- 이전코드 -->
+    <section class="detail-section">
+      <div class="image-div"></div>
+      <div class="title"></div>
+      <div class="content"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+    <footer>
+      <script>
+        fetch("footer.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.querySelector("footer").innerHTML = html;
+          });
+      </script>
+    </footer>
+  </body>
+  <script src="./js/api.js"></script>
+  <script src="./js/map.js"></script>
+</html>
