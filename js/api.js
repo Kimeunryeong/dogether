@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("북미", america);
       console.log("기타", etc);
 
-      const detailTitle = document.querySelector(".detail-title");
       const content = document.querySelector(".content");
       const contenttitle = document.querySelector(".detail-title");
       let title;
