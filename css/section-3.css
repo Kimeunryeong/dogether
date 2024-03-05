@@ -1,12 +1,12 @@
-/* 섹션-2 큰 부모 */
-#section-2 {
+/* 섹션-3 큰 부모 */
+#section-3 {
   width: 100%;
   height: auto;
   display: flex;
   position: relative;
 }
-/* max-width 1280px 설정 */
-.maxsection-2 {
+/* max-width 1024px 설정 */
+.maxsection-3 {
   max-width: 1024px;
   width: 100%;
   height: 100%;
@@ -15,25 +15,37 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   z-index: 100;
 }
-.title-list {
+.main-text3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.title-list3 {
   font-size: 2.5rem;
   font-weight: bold;
 }
+.text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 /* 메인 이미지 */
-.main-bg-img2 {
-  width: 50%;
+.main-bg-img3 {
+  width: 100%;
   height: calc(100vh - 500px);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url("../images/main.png");
+  background-size: contain;
+  background-position: right;
+  background-image: url("../images/section-3.png");
 }
 /* 메인 이미지 왼쪽 흰색 부분 */
-.main-bg-img2::after {
+.main-bg-img3::after {
   content: "";
   position: absolute;
   top: 0;
@@ -42,30 +54,26 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.4);
 }
-.listflex {
+.listflex3 {
   display: flex;
   width: 50%;
   justify-content: space-around;
 }
 /* 메인 컨테이너 */
-.section-2-list {
+.section-3-list {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.main-text1 {
+.main-text3 {
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.main-text2 {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-.main-bg-img2 .section-2-container {
+
+.main-bg-img3 .section-2-container {
   width: 100%;
   height: 100%;
   padding: 0 1rem;
@@ -74,29 +82,32 @@
   align-items: center;
   text-align: start;
 }
-.section-2-container {
+.section-3-container {
   width: 100%;
   height: 100%;
-  max-width: 1440px;
+  max-width: 1024px;
   padding: 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: start;
 }
-.subtitbe2 {
+.subtitbe3 {
   font-size: 1.3rem;
   font-weight: bold;
 }
+.subtext3 {
+  padding-bottom: 20px;
+}
 
 @media screen and (max-width: 500px) {
-  .main-bg-img2::after {
+  .main-bg-img3::after {
     width: 100%;
     height: 50%;
     top: 50%;
     left: 0;
   }
-  .section-2-container {
+  .section-3-container {
     width: 100%;
     height: 80%;
     align-items: end;
