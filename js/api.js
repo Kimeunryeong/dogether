@@ -45,10 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("기타", etc);
 
       const content = document.querySelector(".content");
-      const contenttitle = document.querySelector(".title");
+      const contenttitle = document.querySelector(".detail-title");
       let title;
       switch (clickedDataId) {
-        case "동남아시아":
+        case "음식점":
           title = document.createElement("h1");
           title.textContent = "동남아시아";
           contenttitle.appendChild(title);
