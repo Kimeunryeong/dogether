@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const clickedDataId = params.get("dataId");
   console.log(clickedDataId); // 출력: 동남아시아
+
   // 세계음식 데이터
   const foodData = async () => {
     try {
@@ -14,14 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         }
       );
+      // 동반입장 가능 가게 배열
       const json = await response.json();
       let pet = json?.response?.body?.items?.item?.filter((item) =>
-        // 부산광역시 음식점
-        // item?.address?.includes("부산광역시") &&
         item?.information?.includes("동반 입장가능")
       );
       // console.log(pet);
-      // 동남아시아, 유럽, 인도, 북미남미, 기타
+      // 동반입장 가능 가게 중 동남아시아, 유럽, 인도, 북미남미, 기타 분류
       let southEastAsia = [],
         europe = [],
         eastAsia = [],
@@ -44,14 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("북미", america);
       console.log("기타", etc);
 
+      const detailTitle = document.querySelector(".detail-title");
       const content = document.querySelector(".content");
-      const contenttitle = document.querySelector(".title");
       let title;
       switch (clickedDataId) {
-        case "동남아시아":
-          title = document.createElement("h1");
-          title.textContent = "동남아시아";
-          contenttitle.appendChild(title);
+        case "음식점":
+          detailTitle.textContent = "동남아시아";
           southEastAsia?.forEach((item) => {
             let wrapperDiv = document.createElement("div");
             let category = document.createElement("h1");
