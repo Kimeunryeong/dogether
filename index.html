@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/section-1.css" type="text/css" />
     <link rel="stylesheet" href="css/section-2.css" type="text/css" />
     <link rel="stylesheet" href="css/section-3.css" type="text/css" />
+    <link rel="stylesheet" href="css/guide.css" type="text/css" />
     <!-- JS -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <!-- 폰트어썸 -->
@@ -151,6 +152,16 @@
         <div class="section-3-container"></div>
       </div>
     </section>
+    <!-- 가이드 -->
+    <main>
+      <script>
+        fetch("guide.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.querySelector("main").innerHTML = html;
+          });
+      </script>
+    </main>
     <!-- 푸터 -->
     <footer>
       <script>
