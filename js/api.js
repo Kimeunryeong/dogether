@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let tel = document.createElement("p");
             let date = document.createElement("p");
             let sales = document.createElement("p");
-            wrapperDiv.classList.add("detailList");
+            wrapperDiv.classList.add("detail-list");
             category.textContent = item.title;
             address.textContent = `주소: ${item.address}`;
             tel.textContent = `전화번호: ${item.tel}`;
