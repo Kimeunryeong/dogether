@@ -4,44 +4,32 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
-  background-image: url("../images/main.png");
-  background-color: #f3f3f5;
-  position: relative;
-}
-#section-1::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #f3f3f570;
+  background-image: url("../images/main-img.svg");
 }
 /* 메인 컨테이너 */
 .section-1-container {
   width: 100%;
   height: 100%;
-  max-width: 1440px;
+  max-width: 1024px;
   padding: 0 1rem;
   margin: 0 auto;
   display: flex;
 }
 /* 메인 설명 */
-.section-1-container .main-text {
+.section-1-container .sectiion-1-main-text {
   z-index: 99;
   font-size: 1.5rem;
   text-align: start;
 }
 /* LET'S DOGETHER */
 .section-1-container p:nth-child(1) {
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: bold;
-  color: #ee9b01;
-  padding-top: 5rem;
+  color: #14471E;
 }
 .section-1-container P:nth-child(2) b {
   font-size: 2rem;
-  color: #da6a00;
+  color: #EE9B01;
 }
 .section-1-container p:nth-child(3) {
   font-size: 1.25rem;
