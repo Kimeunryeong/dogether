@@ -1,9 +1,11 @@
 /* 섹션-3 큰 부모 */
 #section-3 {
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   position: relative;
+  background-color: #f2ecdf;
+
 }
 /* max-width 1024px 설정 */
 .maxsection-3 {

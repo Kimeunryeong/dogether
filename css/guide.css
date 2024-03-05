@@ -1,0 +1,9 @@
+#guide {
+  background-image: url(/images/guide.png);
+}
+
+.guide_container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}

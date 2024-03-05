@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/section-1.css" type="text/css" />
     <link rel="stylesheet" href="css/section-2.css" type="text/css" />
     <link rel="stylesheet" href="css/section-3.css" type="text/css" />
+    <link rel="stylesheet" href="css/guide.css" type="text/css" />
     <!-- JS -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <!-- 폰트어썸 -->
@@ -39,6 +40,8 @@
             반려동물과 동반 가능한 <b>식당, 카페, 숙소</b>를 찾아보세요.<br />
           </p>
           <p>DOGTHER는 여러분과 함께 만들어가는 커뮤니티입니다.</p>
+          <div class="section-2-move">
+            <a href="#section-2">알아보기</a></div>
         </div>
       </div>
     </section>
@@ -151,6 +154,16 @@
         <div class="section-3-container"></div>
       </div>
     </section>
+    <!-- 가이드 -->
+    <main>
+      <script>
+        fetch("guide.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.querySelector("main").innerHTML = html;
+          });
+      </script>
+    </main>
     <!-- 푸터 -->
     <footer>
       <script>
@@ -161,6 +174,8 @@
           });
       </script>
     </footer>
+    <!-- js -->
     <script src="js/api.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
   </body>
 </html>

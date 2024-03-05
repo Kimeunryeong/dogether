@@ -5,6 +5,7 @@
   background-size: contain;
   background-position: right;
   background-image: url("../images/main-img.svg");
+  background-color: #f2ecdf;
 }
 /* 메인 컨테이너 */
 .section-1-container {
@@ -29,12 +30,17 @@
 }
 .section-1-container P:nth-child(2) b {
   font-size: 2rem;
-  color: #EE9B01;
+  color: rgb(127, 196, 220);
 }
 .section-1-container p:nth-child(3) {
   font-size: 1.25rem;
   color: gray;
 }
+/* 버튼 */
+.section-2-move {margin: 2rem 0;}
+.section-2-move a {display: block; padding: 1rem 2rem;
+width: fit-content; background-color: #14471E; color: #fff;
+border-radius: 1rem;}
 
 @media screen and (max-width: 768px) {
 }
