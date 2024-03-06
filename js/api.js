@@ -46,20 +46,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const content = document.querySelector(".content");
       const contenttitle = document.querySelector(".detail-title");
+      const contenttext = document.querySelector(".detail-text");
       let title;
+      let detailtext;
       switch (clickedDataId) {
         case "음식점":
           title = document.createElement("h1");
-          title.textContent = "동남아시아";
+          title.textContent = "음식점";
+          detailtext = document.createElement("h1");
+          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
           contenttitle.appendChild(title);
+          contenttext.appendChild(detailtext);
           southEastAsia?.forEach((item) => {
+            let flexDiv = document.createElement("div");
             let wrapperDiv = document.createElement("div");
+            let textDiv = document.createElement("div");
             let category = document.createElement("h1");
             let address = document.createElement("p");
             let tel = document.createElement("p");
             let date = document.createElement("p");
             let sales = document.createElement("p");
-            wrapperDiv.classList.add("detailList");
+            wrapperDiv.classList.add("detailtitle");
+            textDiv.classList.add("detailList");
+            flexDiv.classList.add("detailflex");
             category.textContent = item.title;
             address.textContent = `주소: ${item.address}`;
             tel.textContent = `전화번호: ${item.tel}`;
@@ -69,11 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
             )}`;
             date.innerText = item.information.replace(/\|/g, "/");
             wrapperDiv.appendChild(category);
-            wrapperDiv.appendChild(address);
-            wrapperDiv.appendChild(tel);
-            wrapperDiv.appendChild(sales);
-            wrapperDiv.appendChild(date);
-            content.appendChild(wrapperDiv);
+            textDiv.appendChild(address);
+            textDiv.appendChild(tel);
+            textDiv.appendChild(sales);
+            textDiv.appendChild(date);
+            flexDiv.appendChild(wrapperDiv);
+            flexDiv.appendChild(textDiv);
+            content.appendChild(flexDiv);
           });
           break;
         case "동아시아":
