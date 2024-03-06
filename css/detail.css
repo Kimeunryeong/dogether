@@ -20,7 +20,7 @@
 }
 
 .pitapet {
-  width: 400px; height: 80%;
+  width: 400px;
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
   animation: ani 1.5s linear;

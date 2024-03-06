@@ -154,20 +154,10 @@
         <div class="section-3-container"></div>
       </div>
     </section>
-    <!-- 가이드 -->
-    <main>
-      <script>
-        fetch("guide.html")
-          .then((response) => response.text())
-          .then((html) => {
-            document.querySelector("main").innerHTML = html;
-          });
-      </script>
-    </main>
-    <!-- 푸터 -->
+    <!-- footer -->
     <footer>
       <script>
-        fetch("footer.html")
+        fetch("guide.html")
           .then((response) => response.text())
           .then((html) => {
             document.querySelector("footer").innerHTML = html;
