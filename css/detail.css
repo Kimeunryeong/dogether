@@ -204,3 +204,18 @@
   cursor: default;
   color: #777;
 }
+
+.pitapet {
+  width: 400px;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: ani 1.5s linear;
+}
+@keyframes ani {
+  0% {
+  stroke-dashoffset: 5000; 
+  }
+  100% {
+  stroke-dashoffset: 0;
+  }
+}

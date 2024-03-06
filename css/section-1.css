@@ -20,21 +20,21 @@
 /* 메인 설명 */
 .section-1-container .sectiion-1-main-text {
   z-index: 99;
-  font-size: 1.5rem;
+  font-size: 1.5rem; transition: var(--font-transition);
   text-align: start;
 }
 /* LET'S DOGETHER */
 .section-1-container p:nth-child(1) {
-  font-size: 7rem;
+  font-size: 7rem; transition: var(--font-transition);
   font-weight: bold;
   color: #14471E;
 }
 .section-1-container P:nth-child(2) b {
-  font-size: 2rem;
+  font-size: 2rem; transition: var(--font-transition);
   color: #F0A646;
 }
 .section-1-container p:nth-child(3) {
-  font-size: 1.25rem;
+  font-size: 1.25rem; transition: var(--font-transition);
   color: gray;
 }
 /* 버튼 */
@@ -44,6 +44,20 @@ width: fit-content; background-color: #14471E; color: #fff;
 border-radius: 1rem;}
 
 @media screen and (max-width: 768px) {
+  .section-1-container p:nth-child(1) {
+    font-size: 5rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .section-1-container .sectiion-1-main-text {
+    font-size: 1.25rem;
+  }
+  .section-1-container P:nth-child(2) b {
+    font-size: 1.5rem;
+  }
+  .section-1-container p:nth-child(3) {
+    font-size: 1rem;
+  }
 }
 
 /* #14471E */
