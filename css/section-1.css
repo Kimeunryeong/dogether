@@ -6,7 +6,6 @@
   background-position: right;
   background-image: url("../images/main-img.svg");
   background-color: #f2ecdf;
-
 }
 /* 메인 컨테이너 */
 .section-1-container {
@@ -16,32 +15,50 @@
   padding: 0 1rem;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 /* 메인 설명 */
 .section-1-container .sectiion-1-main-text {
+  width: 52%;
   z-index: 99;
-  font-size: 1.5rem; transition: var(--font-transition);
+  font-size: 1.5rem;
   text-align: start;
 }
 /* LET'S DOGETHER */
 .section-1-container p:nth-child(1) {
-  font-size: 7rem; transition: var(--font-transition);
+  font-size: 5rem;
+  transition: var(--font-transition);
   font-weight: bold;
-  color: #14471E;
+  color: #14471e;
+  margin-bottom: 10px;
+}
+.section-1-container p:nth-child(2) {
+  font-size: 1.5rem;
 }
 .section-1-container P:nth-child(2) b {
-  font-size: 2rem; transition: var(--font-transition);
-  color: #F0A646;
+  font-size: 2rem;
+  transition: var(--font-transition);
+  color: #f0a646;
 }
 .section-1-container p:nth-child(3) {
-  font-size: 1.25rem; transition: var(--font-transition);
+  font-size: 0.8rem;
   color: gray;
+  line-height: 3;
+  transition: var(--font-transition);
 }
 /* 버튼 */
-.section-2-move {margin: 2rem 0;}
-.section-2-move a {display: block; padding: 1rem 2rem;
-width: fit-content; background-color: #14471E; color: #fff;
-border-radius: 1rem;}
+.section-2-move {
+  margin: 2rem 0;
+}
+.section-2-move a {
+  display: block;
+  padding: 1rem 2rem;
+  width: fit-content;
+  background-color: #14471e;
+  color: #fff;
+  border-radius: 1rem;
+}
 
 @media screen and (max-width: 768px) {
   .section-1-container p:nth-child(1) {
