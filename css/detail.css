@@ -21,6 +21,7 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 5rem;
 }
 
 .detail-title {
@@ -53,7 +54,8 @@ body::after {
 }
 .detailflex {
   display: flex;
-  border-bottom: 2px solid black;
+  border-top: 1px solid black;
+  padding: 2rem 0;
 }
 .detailtitle {
   width: 50%;
