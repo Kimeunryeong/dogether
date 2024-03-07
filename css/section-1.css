@@ -3,7 +3,7 @@
   height: calc(100vh - 100px);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: right;
+  background-position: center;
   background-image: url("../images/main-img.svg");
 }
 /* 메인 컨테이너 */
@@ -43,7 +43,6 @@
 .section-1-container p:nth-child(3) {
   font-size: 0.8rem;
   color: gray;
-  line-height: 3;
   transition: var(--font-transition);
 }
 /* 버튼 */
@@ -62,6 +61,10 @@
 @media screen and (max-width: 768px) {
   .section-1-container p:nth-child(1) {
     font-size: 4rem;
+  }
+  #section-1 {
+    background-size: 150%;
+    background-position: bottom right;
   }
 }
 @media screen and (max-width: 640px) {
