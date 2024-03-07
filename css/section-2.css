@@ -25,6 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 2rem;
 }
 #section-2 > .section-2-container:nth-child(2) .section-2-main-text {
   background-image: url("../images/main-2-img-2.svg");
@@ -46,7 +47,7 @@
   align-items: center;
 }
 .section-2-main-text {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .section-2-main-text b {
   color: #da6a00;
@@ -63,6 +64,9 @@
 .section-2-list i {
   color: #ee9b01;
   font-size: 2rem;
+}
+.section-2-list div {
+  margin-bottom: 50px;
 }
 
 @media screen and (max-width: 768px) {
