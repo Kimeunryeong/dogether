@@ -5,7 +5,6 @@
   background-size: contain;
   background-position: right;
   background-image: url("../images/main-img.svg");
-  background-color: #f2ecdf;
 }
 /* 메인 컨테이너 */
 .section-1-container {
@@ -62,12 +61,15 @@
 
 @media screen and (max-width: 768px) {
   .section-1-container p:nth-child(1) {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
 @media screen and (max-width: 640px) {
   .section-1-container .sectiion-1-main-text {
     font-size: 1.25rem;
+  }
+  .section-1-container P:nth-child(1) {
+    font-size: 3rem;
   }
   .section-1-container P:nth-child(2) b {
     font-size: 1.5rem;
@@ -76,5 +78,3 @@
     font-size: 1rem;
   }
 }
-
-/* #14471E */

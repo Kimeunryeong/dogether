@@ -4,7 +4,6 @@
   height: 100vh;
   display: flex;
   position: relative;
-  background-color: #f2ecdf;
 
 }
 /* max-width 1024px 설정 */
@@ -114,5 +113,9 @@
     height: 80%;
     align-items: end;
     padding-bottom: 1rem;
+  }
+
+  .title-list3 {
+    font-size: 1.8rem;
   }
 }
