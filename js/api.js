@@ -251,71 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   hotelData();
 
-  // 카페 데이터
-  const cafeData = () => {
-    fetch("../json/cafe.json")
-      .then((response) => response.json())
-      .then((data) => {
-        let cafe = [];
-        data?.forEach((item) => {
-          item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
-        });
-        console.log("카페", cafe);
-        // console.log(data);
-        const content = document.querySelector(".content");
-        const contenttitle = document.querySelector(".detail-title");
-        const contenttext = document.querySelector(".detail-text");
-        let title;
-        let detailtext;
-        if (clickedDataId === "카페") {
-          title = document.createElement("div");
-          title.textContent = "카페";
-          detailtext = document.createElement("div");
-          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
-          cafe?.forEach((item) => {
-            let flexDiv = document.createElement("div");
-            let wrapperDiv = document.createElement("div");
-            let textDiv = document.createElement("div");
-            let name = document.createElement("h1");
-            let type = document.createElement("p");
-            let address = document.createElement("p");
-            let facility = document.createElement("p");
-            let open = document.createElement("p");
-            let closed = document.createElement("P");
-            // let date = document.createElement("p");
-            flexDiv.classList.add("detailflex");
-            wrapperDiv.classList.add("detailtitle");
-            textDiv.classList.add("detailList");
-            name.textContent = item.FCLTY_NM;
-            type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
-            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
-            facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
-            open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
-            closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
-            // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
-
-            contenttitle.appendChild(title);
-            contenttext.appendChild(detailtext);
-            wrapperDiv.appendChild(name);
-            textDiv.appendChild(type);
-
-            textDiv.appendChild(address);
-            textDiv.appendChild(facility);
-            textDiv.appendChild(open);
-            textDiv.appendChild(closed);
-            // textDiv.appendChild(date);
-            flexDiv.appendChild(wrapperDiv);
-            flexDiv.appendChild(textDiv);
-            content.appendChild(flexDiv);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
-      });
-  };
-  cafeData();
-  // 카페 데이터
+  // 미술관 데이터
   const galleryData = () => {
     fetch("../json/cafe.json")
       .then((response) => response.json())
@@ -379,3 +315,143 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   galleryData();
 });
+
+
+
+
+// 카페 데이터
+const cafeData = () => {
+  fetch("../json/cafe.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let cafe = [];
+      data?.forEach((item) => {
+        item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
+      });
+      console.log("카페", cafe);
+      
+      // 처음 10개의 데이터만 가져오기
+      const firstPageData = cafe.slice(0, 10);
+      
+      renderCafeData(firstPageData);
+      // 전체 데이터의 갯수를 이용하여 페이지 버튼 생성
+      const totalPages = Math.ceil(cafe?.length / 10); // 10은 한 페이지에 보여줄 게시글의 수
+      createPageBtn(totalPages);
+    })
+    .catch((error) => {
+      console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+    });
+}
+// 페이지네이션
+// 서버로부터 받은 데이터를 화면에 렌더링하는 함수
+const renderCafeData = (data) => {
+  const content = document.querySelector(".content");
+  const contenttitle = document.querySelector(".detail-title");
+  const contenttext = document.querySelector(".detail-text");
+
+   // 이전에 렌더링된 내용을 제거
+   content.innerHTML = "";
+
+  // 제목과 설명이 없는 경우에만 생성
+  if (contenttitle.innerHTML === "" && contenttext.innerHTML === "") {
+    const title = document.createElement("div");
+    title.textContent = "카페";
+    const detailtext = document.createElement("div");
+    detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+
+    contenttitle.appendChild(title);
+    contenttext.appendChild(detailtext);
+  }
+
+  data.forEach((item) => {
+    const flexDiv = document.createElement("div");
+    const wrapperDiv = document.createElement("div");
+    const textDiv = document.createElement("div");
+    const name = document.createElement("h1");
+    const type = document.createElement("p");
+    const address = document.createElement("p");
+    const facility = document.createElement("p");
+    const open = document.createElement("p");
+    const closed = document.createElement("p");
+
+    flexDiv.classList.add("detailflex");
+    wrapperDiv.classList.add("detailtitle");
+    textDiv.classList.add("detailList");
+
+    name.textContent = item.FCLTY_NM;
+    type.innerHTML = `<p style="font-size: 1.5rem;">종류</p> ${item.FCLTY_INFO_DC}`;
+    address.innerHTML = `<p style="font-size: 1.5rem;">주소</p> ${item.LNM_ADDR}`;
+    facility.innerHTML = `<p style="font-size: 1.5rem;">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
+    open.innerHTML = `<p style="font-size: 1.5rem;">영업시간</p> ${item.OPER_TIME}`;
+    closed.innerHTML = `<p style="font-size: 1.5rem;">휴무일</p> ${item.RSTDE_GUID_CN}`;
+
+    wrapperDiv.appendChild(name);
+    textDiv.appendChild(type);
+    textDiv.appendChild(address);
+    textDiv.appendChild(facility);
+    textDiv.appendChild(open);
+    textDiv.appendChild(closed);
+
+    flexDiv.appendChild(wrapperDiv);
+    flexDiv.appendChild(textDiv);
+
+    content.appendChild(flexDiv);
+  });
+};
+// 버튼 생성
+const createPageBtn = (totalPages) => {
+  const pageContainer = document.querySelector(".page-container");
+  pageContainer.innerHTML = ""; // 이전에 생성된 버튼 제거
+  
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement("button");
+    button.textContent = i;
+    button.addEventListener("click", () => requestPage(i));
+    pageContainer.appendChild(button);
+    button.classList.add("page-btn");
+  }
+  // 초기 로드 시 첫 번째 버튼에 스타일 적용
+  btnOn(1);
+};
+// 클릭된 버튼에만 클래스 추가하여 스타일을 변경하는 함수
+const btnOn = (currentPage) => {
+  const buttons = document.querySelectorAll(".page-container button");
+  buttons.forEach((item, index) => {
+    if (index + 1 === currentPage) {
+      item.classList.add("btn-on"); // 클릭된 버튼에 활성화 클래스 추가
+    } else {
+      item.classList.remove("btn-on"); // 클릭되지 않은 버튼에는 활성화 클래스 제거
+    }
+  });
+};
+// 페이지 번호를 클릭했을 때 데이터를 요청하는 함수
+const requestPage = async (page) => {
+  try {
+    fetch("../json/cafe.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let cafe = [];
+      data?.forEach((item) => {
+        item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
+      });
+      console.log("카페", cafe);
+        
+      // 페이지 당 항목 수
+      const itemsPerPage = 10;
+      // 요청할 데이터의 시작 인덱스
+      const startIndex = (page - 1) * itemsPerPage;
+      // 요청할 데이터의 끝 인덱스
+      const endIndex = startIndex + itemsPerPage;
+      // 페이지에 해당하는 데이터 가져오기
+      const pageData = cafe.slice(startIndex, endIndex);
+
+      // 화면에 데이터 렌더링
+      renderCafeData(pageData);
+      // 버튼을 활성화하는 함수 호출
+      btnOn(page);
+      })
+  } catch (error) {
+      console.error(error);
+  }
+};
+cafeData();

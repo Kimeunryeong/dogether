@@ -223,3 +223,6 @@ body::after {
   cursor: default;
   color: #777;
 }
+
+.page-btn {padding: 0.25rem; cursor: pointer;}
+.btn-on {background-color: black; color: white;}
