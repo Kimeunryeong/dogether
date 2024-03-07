@@ -1,7 +1,6 @@
 #header {
   width: 100%;
-  background-color: #f2ecdf;
-
+  position: relative;
 }
 
 .header-container {
@@ -14,6 +13,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 #logo img {
   width: 4rem;
   transition: var(--width-transition);
@@ -33,6 +33,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  #menu {
+    /* display: none; */
+  }
   #menu ul li {
     font-size: 0.875rem;
   }
