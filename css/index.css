@@ -32,7 +32,7 @@ a {
   color: inherit;
 }
 body {
-  font-family: "NotoSansKR-Regular";
+  font-family: "Maplestory Light";
   background-color: #FDF6EB;
 
 }
@@ -42,8 +42,12 @@ body {
   --width-transition: width 0.5s ease;
 }
 @font-face {
-  font-family: "DNFBitBitv2";
-  src: url("../fonts/DNFBitBitv2.ttf") format("truetype");
+  font-family: "Maplestory Bold";
+  src: url("../fonts/Maplestory\ Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Maplestory Light";
+  src: url("../fonts/Maplestory\ Light.ttf") format("truetype");
 }
 @font-face {
   font-family: "NotoSansKR-Regular";
