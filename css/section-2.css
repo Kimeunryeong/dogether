@@ -72,7 +72,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  #section-2 {
-    background-image: url("../images/main-2-img.svg") ;
+  .section-2-main-text p {
+    font-size: 2.2rem;
   }
 }
