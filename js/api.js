@@ -21,30 +21,6 @@ const foodData = async () => {
       item?.information?.includes("동반 입장가능")
     );
 
-    // let southEastAsia = [],
-    //   europe = [],
-    //   eastAsia = [],
-    //   america = [],
-    //   etc = [];
-
-    // pet?.forEach((item) => {
-    //   if (item.category2?.includes("동남아시아")) southEastAsia.push(item);
-    //   else if (item.category2?.includes("동아시아")) eastAsia.push(item);
-    //   else if (item.category2?.includes("유럽")) europe.push(item);
-    //   else if (
-    //     item.category2?.includes("북미") ||
-    //     item.category2?.includes("남미")
-    //   )
-    //     america.push(item);
-    //   else etc.push(item);
-    // });
-
-    // console.log("동남아시아", southEastAsia);
-    // console.log("동아시아", eastAsia);
-    // console.log("유럽", europe);
-    // console.log("남미.북미", america);
-    // console.log("기타", etc);
-
     renderCategory(pet);
   } catch (error) {
     console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
@@ -55,7 +31,6 @@ const foodData = async () => {
 // 카테고리 렌더링 함수
 const renderCategory = (data) => {
   const categoryContainer = document.querySelector(".category");
-  console.log(categoryContainer)
   categoryContainer.innerHTML = ""; // 기존 카테고리 삭제
 
   const categories = ["동남아시아", "동아시아", "유럽", "아메리카", "기타"];
@@ -66,12 +41,49 @@ const renderCategory = (data) => {
     categoryContainer.appendChild(button);
   });
 
-  renderDetail(data); // 초기 렌더링
+  // 초기 렌더링은 모든 데이터를 보여줌
+  renderDetail(data);
 };
 
 // 카테고리 클릭 시 처리 함수
-const handleCategoryClick = (data) => {
-  renderDetail(data); // 선택된 카테고리에 해당하는 데이터 렌더링
+const handleCategoryClick = (cat, data) => {
+  let filteredData;
+  switch (cat) {
+    case "동남아시아":
+      filteredData = data.filter((item) =>
+        item.category2?.includes("동남아시아")
+      );
+      break;
+    case "동아시아":
+      filteredData = data.filter((item) =>
+        item.category2?.includes("동아시아")
+      );
+      break;
+    case "유럽":
+      filteredData = data.filter((item) => item.category2?.includes("유럽"));
+      break;
+    case "아메리카":
+      filteredData = data.filter(
+        (item) =>
+          item.category2?.includes("북미") || item.category2?.includes("남미")
+      );
+      break;
+    case "기타":
+      filteredData = data.filter(
+        (item) =>
+          !(
+            item.category2?.includes("동남아시아") ||
+            item.category2?.includes("동아시아") ||
+            item.category2?.includes("유럽") ||
+            item.category2?.includes("북미") ||
+            item.category2?.includes("남미")
+          )
+      );
+      break;
+    default:
+      filteredData = data;
+  }
+  renderDetail(filteredData); // 선택된 카테고리에 해당하는 데이터 렌더링
 };
 
 // 디테일 렌더링 함수
@@ -112,6 +124,9 @@ const renderDetail = (data) => {
     content.appendChild(flexDiv);
   });
 };
+
+
+
 
   // 호텔 데이터
   const hotelData = () => {
@@ -162,7 +177,6 @@ const renderDetail = (data) => {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-
   // 미술관 데이터
   const galleryData = () => {
     fetch("../json/cafe.json")
@@ -225,8 +239,6 @@ const renderDetail = (data) => {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-
-
 // 카페 데이터
 // 페이지네이션
 const PAGE_SIZE = 10; // 한 페이지에 표시할 항목 수
