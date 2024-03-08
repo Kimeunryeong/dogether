@@ -72,4 +72,7 @@
 }
 
 @media screen and (max-width: 768px) {
+  #section-2 {
+    background-image: url("../images/main-2-img.svg") ;
+  }
 }
