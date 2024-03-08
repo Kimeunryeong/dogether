@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (error.message.includes("Unexpected token")) foodData();
     }
   };
-  foodData();
 
   // 호텔 데이터
   const hotelData = () => {
@@ -249,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-  hotelData();
 
   // 미술관 데이터
   const galleryData = () => {
@@ -313,10 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-  galleryData();
-});
-
-
 
 
 // 카페 데이터
@@ -332,7 +326,6 @@ const cafeData = () => {
       
       // 처음 10개의 데이터만 가져오기
       const firstPageData = cafe.slice(0, 10);
-      
       renderCafeData(firstPageData);
       // 전체 데이터의 갯수를 이용하여 페이지 버튼 생성
       const totalPages = Math.ceil(cafe?.length / 10); // 10은 한 페이지에 보여줄 게시글의 수
@@ -454,4 +447,20 @@ const requestPage = async (page) => {
       console.error(error);
   }
 };
-cafeData();
+  
+switch (clickedDataId) {
+  case "음식점":
+    foodData();
+    break;
+  case "숙소":
+    hotelData();
+    break;
+  case "미술관":
+    galleryData();
+    break;
+  case "카페":
+    cafeData();
+    break;
+  default:
+    console.log("");
+}});
