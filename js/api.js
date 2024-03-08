@@ -2,7 +2,7 @@ const serviceKey = "b26f3923-0250-4ed3-8329-54b04f6af8a2";
 document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const clickedDataId = params.get("dataId");
-  console.log(clickedDataId); // 출력: 동남아시아
+  console.log(clickedDataId); // param 확인
 
   // 세계음식 데이터
   const foodData = async () => {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("동남아시아", southEastAsia);
       console.log("동아시아", eastAsia);
       console.log("유럽", europe);
-      console.log("북미", america);
+      console.log("남미.북미", america);
       console.log("기타", etc);
 
       const content = document.querySelector(".content");
@@ -49,8 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const contenttext = document.querySelector(".detail-text");
       let title;
       let detailtext;
+      // 카테고리
+      const category = document.querySelector(".category");
+      const southEastAsiaBtn = document.createElement("button");
+      const eastAsiaBtn = document.createElement("button");
+      const europeBtn = document.createElement("button");
+      const americaBtn = document.createElement("button");
+      const etcBtn = document.createElement("button");
+      southEastAsiaBtn.textContent = "동남아시아 음식"
+      eastAsiaBtn.textContent = "동아시아 음식"
+      europeBtn.textContent = "유럽 음식"
+      americaBtn.textContent = "남미·북미 음식"
+      etcBtn.textContent = "기타"
+      category.appendChild(southEastAsiaBtn);
+      category.appendChild(eastAsiaBtn);
+      category.appendChild(europeBtn);
+      category.appendChild(americaBtn);
+      category.appendChild(etcBtn);
+
       switch (clickedDataId) {
-        case "음식점":
+        case "동남아시아":
           title = document.createElement("div");
           title.textContent = "음식점";
           detailtext = document.createElement("div");
@@ -314,6 +332,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // 카페 데이터
+// 페이지네이션
+const PAGE_SIZE = 10; // 한 페이지에 표시할 항목 수
 const cafeData = () => {
   fetch("../json/cafe.json")
     .then((response) => response.json())
@@ -323,38 +343,92 @@ const cafeData = () => {
         item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
       });
       console.log("카페", cafe);
-      
-      // 처음 10개의 데이터만 가져오기
-      const firstPageData = cafe.slice(0, 10);
-      renderCafeData(firstPageData);
-      // 전체 데이터의 갯수를 이용하여 페이지 버튼 생성
-      const totalPages = Math.ceil(cafe?.length / 10); // 10은 한 페이지에 보여줄 게시글의 수
-      createPageBtn(totalPages);
+
+      // 페이지네이션
+      const totalPages = Math.ceil(cafe.length / PAGE_SIZE); // 전체 페이지 수 계산
+      renderPageButtons(totalPages, 1); // 페이지 버튼 렌더링
+      renderCafeData(cafe.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+       // 타이틀과 디테일 텍스트 추가
+       const title = document.createElement("div");
+       title.textContent = "카페";
+       const detailtext = document.createElement("div");
+       detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+       const contenttitle = document.querySelector(".detail-title");
+       const contenttext = document.querySelector(".detail-text");
+       contenttitle.appendChild(title);
+       contenttext.appendChild(detailtext);
     })
     .catch((error) => {
       console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
     });
-}
-// 페이지네이션
-// 서버로부터 받은 데이터를 화면에 렌더링하는 함수
+};
+// 페이지 버튼 렌더링 함수
+const renderPageButtons = (totalPages, currentPage) => {
+  const pageContainer = document.querySelector(".page-container");
+  pageContainer.innerHTML = ""; // 기존 페이지 버튼 초기화
+
+  // 시작 페이지와 끝 페이지 계산
+  let startPage = Math.max(currentPage - 5, 1);
+  let endPage = Math.min(startPage + 9, totalPages);
+
+  // 이전 버튼
+  if (currentPage > 1) {
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "이전";
+    prevButton.addEventListener("click", () => requestPage(currentPage - 1));
+    pageContainer.appendChild(prevButton);
+    prevButton.classList.add("prev-btn");
+  }
+
+  // 페이지 버튼 생성
+  for (let i = startPage; i <= endPage; i++) {
+    const button = document.createElement("button");
+    button.textContent = i;
+    button.addEventListener("click", () => requestPage(i));
+    button.classList.add("page-btn"); // 페이지 버튼에 CSS 클래스 추가
+    if (i === currentPage) {
+      button.classList.add("btn-on"); // 현재 페이지 버튼에 추가 CSS 클래스
+    }
+    pageContainer.appendChild(button);
+  }
+
+  // 다음 버튼
+  if (currentPage < totalPages) {
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "다음";
+    nextButton.addEventListener("click", () => requestPage(currentPage + 1));
+    pageContainer.appendChild(nextButton);
+    nextButton.classList.add("next-btn");
+  }
+};
+// 페이지 데이터 요청 함수
+const requestPage = (page) => {
+  fetch("../json/cafe.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let cafe = [];
+      data?.forEach((item) => {
+        item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
+      });
+      console.log("카페", cafe);
+
+      // 요청할 페이지의 데이터 가져오기
+      const startIndex = (page - 1) * PAGE_SIZE;
+      const endIndex = startIndex + PAGE_SIZE;
+      const pageData = cafe.slice(startIndex, endIndex);
+
+      // 페이지 버튼 재렌더링 및 데이터 렌더링
+      renderPageButtons(Math.ceil(cafe.length / PAGE_SIZE), page);
+      renderCafeData(pageData);
+    })
+    .catch((error) => {
+      console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+    });
+};
+// 카페 데이터 렌더링 함수
 const renderCafeData = (data) => {
   const content = document.querySelector(".content");
-  const contenttitle = document.querySelector(".detail-title");
-  const contenttext = document.querySelector(".detail-text");
-
-   // 이전에 렌더링된 내용을 제거
-   content.innerHTML = "";
-
-  // 제목과 설명이 없는 경우에만 생성
-  if (contenttitle.innerHTML === "" && contenttext.innerHTML === "") {
-    const title = document.createElement("div");
-    title.textContent = "카페";
-    const detailtext = document.createElement("div");
-    detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
-
-    contenttitle.appendChild(title);
-    contenttext.appendChild(detailtext);
-  }
+  content.innerHTML = ""; // 기존 카페 데이터 초기화
 
   data.forEach((item) => {
     const flexDiv = document.createElement("div");
@@ -390,62 +464,6 @@ const renderCafeData = (data) => {
 
     content.appendChild(flexDiv);
   });
-};
-// 버튼 생성
-const createPageBtn = (totalPages) => {
-  const pageContainer = document.querySelector(".page-container");
-  pageContainer.innerHTML = ""; // 이전에 생성된 버튼 제거
-  
-  for (let i = 1; i <= totalPages; i++) {
-    const button = document.createElement("button");
-    button.textContent = i;
-    button.addEventListener("click", () => requestPage(i));
-    pageContainer.appendChild(button);
-    button.classList.add("page-btn");
-  }
-  // 초기 로드 시 첫 번째 버튼에 스타일 적용
-  btnOn(1);
-};
-// 클릭된 버튼에만 클래스 추가하여 스타일을 변경하는 함수
-const btnOn = (currentPage) => {
-  const buttons = document.querySelectorAll(".page-container button");
-  buttons.forEach((item, index) => {
-    if (index + 1 === currentPage) {
-      item.classList.add("btn-on"); // 클릭된 버튼에 활성화 클래스 추가
-    } else {
-      item.classList.remove("btn-on"); // 클릭되지 않은 버튼에는 활성화 클래스 제거
-    }
-  });
-};
-// 페이지 번호를 클릭했을 때 데이터를 요청하는 함수
-const requestPage = async (page) => {
-  try {
-    fetch("../json/cafe.json")
-    .then((response) => response.json())
-    .then((data) => {
-      let cafe = [];
-      data?.forEach((item) => {
-        item.CTGRY_THREE_NM?.includes("카페") && cafe.push(item);
-      });
-      console.log("카페", cafe);
-        
-      // 페이지 당 항목 수
-      const itemsPerPage = 10;
-      // 요청할 데이터의 시작 인덱스
-      const startIndex = (page - 1) * itemsPerPage;
-      // 요청할 데이터의 끝 인덱스
-      const endIndex = startIndex + itemsPerPage;
-      // 페이지에 해당하는 데이터 가져오기
-      const pageData = cafe.slice(startIndex, endIndex);
-
-      // 화면에 데이터 렌더링
-      renderCafeData(pageData);
-      // 버튼을 활성화하는 함수 호출
-      btnOn(page);
-      })
-  } catch (error) {
-      console.error(error);
-  }
 };
   
 switch (clickedDataId) {
