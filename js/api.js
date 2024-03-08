@@ -15,37 +15,37 @@ const foodData = async () => {
         },
       }
     );
-
     const json = await response.json();
+    // 펫 동반 가능 데이터
     let pet = json?.response?.body?.items?.item?.filter((item) =>
       item?.information?.includes("동반 입장가능")
     );
 
-    let southEastAsia = [],
-      europe = [],
-      eastAsia = [],
-      america = [],
-      etc = [];
+    // let southEastAsia = [],
+    //   europe = [],
+    //   eastAsia = [],
+    //   america = [],
+    //   etc = [];
 
-    pet?.forEach((item) => {
-      if (item.category2?.includes("동남아시아")) southEastAsia.push(item);
-      else if (item.category2?.includes("동아시아")) eastAsia.push(item);
-      else if (item.category2?.includes("유럽")) europe.push(item);
-      else if (
-        item.category2?.includes("북미") ||
-        item.category2?.includes("남미")
-      )
-        america.push(item);
-      else etc.push(item);
-    });
+    // pet?.forEach((item) => {
+    //   if (item.category2?.includes("동남아시아")) southEastAsia.push(item);
+    //   else if (item.category2?.includes("동아시아")) eastAsia.push(item);
+    //   else if (item.category2?.includes("유럽")) europe.push(item);
+    //   else if (
+    //     item.category2?.includes("북미") ||
+    //     item.category2?.includes("남미")
+    //   )
+    //     america.push(item);
+    //   else etc.push(item);
+    // });
 
-    console.log("동남아시아", southEastAsia);
-    console.log("동아시아", eastAsia);
-    console.log("유럽", europe);
-    console.log("남미.북미", america);
-    console.log("기타", etc);
+    // console.log("동남아시아", southEastAsia);
+    // console.log("동아시아", eastAsia);
+    // console.log("유럽", europe);
+    // console.log("남미.북미", america);
+    // console.log("기타", etc);
 
-    renderCategory(southEastAsia);
+    renderCategory(pet);
   } catch (error) {
     console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
     if (error?.message.includes("Unexpected token")) foodData();
