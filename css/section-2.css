@@ -60,7 +60,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .section-2-main-text p {
-    font-size: 2.2rem;
+  .section-2-main-text {
+    width: 50%;
+    font-size: 2rem;
   }
+
 }
