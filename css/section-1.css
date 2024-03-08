@@ -80,4 +80,16 @@
   .section-1-container p:nth-child(3) {
     font-size: 1rem;
   }
+  .section-1-container {
+    height: 70%;
+  }
+  .section-1-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #section-1 {
+    background-size: 150%;
+    background-position: 120% 100%;
+  }  
 }
