@@ -27,7 +27,7 @@
 }
 /* LET'S DOGETHER */
 .section-1-container p:nth-child(1) {
-  font-size: 7rem;
+  font-size: 6rem;
   transition: var(--font-transition);
   font-weight: bold;
   color: #14471e;
