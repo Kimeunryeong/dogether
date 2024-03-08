@@ -330,6 +330,15 @@ const cafeData = () => {
       const totalPages = Math.ceil(cafe.length / PAGE_SIZE); // 전체 페이지 수 계산
       renderPageButtons(totalPages, 1); // 페이지 버튼 렌더링
       renderCafeData(cafe.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+       // 타이틀과 디테일 텍스트 추가
+       const title = document.createElement("div");
+       title.textContent = "카페";
+       const detailtext = document.createElement("div");
+       detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+       const contenttitle = document.querySelector(".detail-title");
+       const contenttext = document.querySelector(".detail-text");
+       contenttitle.appendChild(title);
+       contenttext.appendChild(detailtext);
     })
     .catch((error) => {
       console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
