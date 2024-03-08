@@ -2,7 +2,7 @@ const serviceKey = "b26f3923-0250-4ed3-8329-54b04f6af8a2";
 document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const clickedDataId = params.get("dataId");
-  console.log(clickedDataId); // 출력: 동남아시아
+  console.log(clickedDataId); // param 확인
 
   // 세계음식 데이터
   const foodData = async () => {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("동남아시아", southEastAsia);
       console.log("동아시아", eastAsia);
       console.log("유럽", europe);
-      console.log("북미", america);
+      console.log("남미.북미", america);
       console.log("기타", etc);
 
       const content = document.querySelector(".content");
@@ -49,8 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const contenttext = document.querySelector(".detail-text");
       let title;
       let detailtext;
+      // 카테고리
+      const category = document.querySelector(".category");
+      const southEastAsiaBtn = document.createElement("button");
+      const eastAsiaBtn = document.createElement("button");
+      const europeBtn = document.createElement("button");
+      const americaBtn = document.createElement("button");
+      const etcBtn = document.createElement("button");
+      southEastAsiaBtn.textContent = "동남아시아 음식"
+      eastAsiaBtn.textContent = "동아시아 음식"
+      europeBtn.textContent = "유럽 음식"
+      americaBtn.textContent = "남미·북미 음식"
+      etcBtn.textContent = "기타"
+      category.appendChild(southEastAsiaBtn);
+      category.appendChild(eastAsiaBtn);
+      category.appendChild(europeBtn);
+      category.appendChild(americaBtn);
+      category.appendChild(etcBtn);
+
       switch (clickedDataId) {
-        case "음식점":
+        case "동남아시아":
           title = document.createElement("div");
           title.textContent = "음식점";
           detailtext = document.createElement("div");
