@@ -25,7 +25,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 4rem;
+  font-family: "yg-jalnan";
+  text-align: center;
+}
+.section-2-main-text p:nth-child(2){
   font-size: 2rem;
+
+  
 }
 
 .listbox {
@@ -40,35 +47,16 @@
   justify-content: center;
   align-items: center;
 }
-.section-2-main-text {
-  font-size: 3rem;
-  font-family: "yg-jalnan";
-}
-.section-2-main-text b {
-  color: #da6a00;
-}
 .section-2-list div {
   width: 100%;
 }
-.section-2-list div a p:nth-child(1) {
-  font-size: 2rem;
-}
-.section-2-list div a p:nth-child(2) {
-  font-size: 1.5rem;
-}
+
 .section-2-list i {
   color: #ee9b01;
   font-size: 2rem;
 }
 .section-2-list div {
   margin-bottom: 50px;
-}
-/* 섹션2-2 */
-.section-2-2 {
-  height: 80vh;
-  background-image: url("../images/section-2-2bg.png");
-  background-position: right bottom;
-  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
