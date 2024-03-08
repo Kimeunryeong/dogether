@@ -32,7 +32,7 @@ a {
   color: inherit;
 }
 body {
-  font-family: "IBMPlexSansKR-Regular";
+  font-family: "SUITE-Regular";
   background-color: #FDF6EB;
 
 }
@@ -41,22 +41,16 @@ body {
   --height-transition: height 0.5s ease;
   --width-transition: width 0.5s ease;
 }
-@font-face {
-  font-family: "Maplestory Bold";
-  src: url("../fonts/Maplestory\ Bold.ttf") format("truetype");
-}
+/* 메인 타이틀 폰트 */
 @font-face {
   font-family: 'yg-jalnan';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'IBMPlexSansKR-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: "SUITE-Regular";
+  src: url("../fonts/SUITE-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "NotoSansKR-Regular";
