@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const clickedDataId = params.get("dataId");
   console.log(clickedDataId); // param 확인
+  const PAGE_SIZE = 10; // 한 페이지에 표시할 항목 수
 
   // 세계음식 데이터 불러오기
   const foodData = async () => {
@@ -20,6 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let data = json?.response?.body?.items?.item?.filter((item) =>
         item?.information?.includes("동반 입장가능")
       );
+      // 타이틀과 디테일 텍스트 추가
+      const title = document.createElement("div");
+      title.textContent = "음식점";
+      const detailtext = document.createElement("div");
+      detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+      const contenttitle = document.querySelector(".detail-title");
+      const contenttext = document.querySelector(".detail-text");
+      contenttitle.appendChild(title);
+      contenttext.appendChild(detailtext);
       // 카테고리 렌더링
       renderCategory(data);
       // 맨 처음에는 동남아시아 데이터를 렌더링하기
@@ -97,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const renderDetail = (data) => {
     const content = document.querySelector(".content");
     content.innerHTML = ""; // 기존 데이터 삭제
-
+    
     data?.forEach((item) => {
       let flexDiv = document.createElement("div");
       let wrapperDiv = document.createElement("div");
@@ -131,121 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  // 호텔 데이터
-  const hotelData = () => {
-    fetch("../json/hotel.json")
-      .then((response) => response.json())
-      .then((data) => {
-        let petOk = [];
-        data?.forEach((item) => {
-          item.pet_info_cn?.includes("반려동물 동반 가능") && petOk.push(item);
-        });
-        console.log("숙소", petOk);
-        // 호텔 디테일
-        const content = document.querySelector(".content");
-        const contenttitle = document.querySelector(".detail-title");
-        const contenttext = document.querySelector(".detail-text");
-        let title;
-        let detailtext;
-        if (clickedDataId === "숙소") {
-          title = document.createElement("div");
-          title.textContent = "숙소";
-          detailtext = document.createElement("div");
-          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
-          petOk?.forEach((item) => {
-            let flexDiv = document.createElement("div");
-            let wrapperDiv = document.createElement("div");
-            let textDiv = document.createElement("div");
-            let name = document.createElement("h1");
-            let address = document.createElement("p");
-            let date = document.createElement("p");
-            flexDiv.classList.add("detailflex");
-            wrapperDiv.classList.add("detailtitle");
-            textDiv.classList.add("detailList");
-            name.textContent = item.ldgs_nm;
-            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.ldgs_addr}`;
-            date.innerHTML = `<p style="font-size: 1.5rem;">기타정보</p> ${item.pet_info_cn}`;
-            contenttitle.appendChild(title);
-            contenttext.appendChild(detailtext);
-            wrapperDiv.appendChild(name);
-            textDiv.appendChild(address);
-            textDiv.appendChild(date);
-            flexDiv.appendChild(wrapperDiv);
-            flexDiv.appendChild(textDiv);
-            content.appendChild(flexDiv);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
-      });
-  };
-  // 미술관 데이터
-  const galleryData = () => {
-    fetch("../json/cafe.json")
-      .then((response) => response.json())
-      .then((data) => {
-        let gallery = [];
-        data?.forEach((item) => {
-          item.CTGRY_THREE_NM?.includes("미술관") && gallery.push(item);
-        });
-        console.log("미술관", gallery);
-        // console.log(data);
-        const content = document.querySelector(".content");
-        const contenttitle = document.querySelector(".detail-title");
-        const contenttext = document.querySelector(".detail-text");
-        let title;
-        let detailtext;
-        if (clickedDataId === "미술관") {
-          title = document.createElement("div");
-          title.textContent = "미술관";
-          detailtext = document.createElement("div");
-          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
-          gallery?.forEach((item) => {
-            let flexDiv = document.createElement("div");
-            let wrapperDiv = document.createElement("div");
-            let textDiv = document.createElement("div");
-            let name = document.createElement("h1");
-            let type = document.createElement("p");
-            let address = document.createElement("p");
-            let facility = document.createElement("p");
-            let open = document.createElement("p");
-            let closed = document.createElement("P");
-            // let date = document.createElement("p");
-            flexDiv.classList.add("detailflex");
-            wrapperDiv.classList.add("detailtitle");
-            textDiv.classList.add("detailList");
-            name.textContent = item.FCLTY_NM;
-            type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
-            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
-            facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
-            open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
-            closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
-            // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
-
-            contenttitle.appendChild(title);
-            contenttext.appendChild(detailtext);
-            wrapperDiv.appendChild(name);
-            textDiv.appendChild(type);
-            textDiv.appendChild(address);
-            textDiv.appendChild(facility);
-            textDiv.appendChild(open);
-            textDiv.appendChild(closed);
-            // textDiv.appendChild(date);
-            flexDiv.appendChild(wrapperDiv);
-            flexDiv.appendChild(textDiv);
-            content.appendChild(flexDiv);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
-      });
-  };
-
   // 카페 데이터
   // 페이지네이션
-  const PAGE_SIZE = 10; // 한 페이지에 표시할 항목 수
   const cafeData = () => {
     fetch("../json/cafe.json")
       .then((response) => response.json())
@@ -378,6 +275,117 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
+  // 호텔 데이터
+  const hotelData = () => {
+    fetch("../json/hotel.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let petOk = [];
+        data?.forEach((item) => {
+          item.pet_info_cn?.includes("반려동물 동반 가능") && petOk.push(item);
+        });
+        console.log("숙소", petOk);
+        // 호텔 디테일
+        const content = document.querySelector(".content");
+        const contenttitle = document.querySelector(".detail-title");
+        const contenttext = document.querySelector(".detail-text");
+        let title;
+        let detailtext;
+        if (clickedDataId === "숙소") {
+          title = document.createElement("div");
+          title.textContent = "숙소";
+          detailtext = document.createElement("div");
+          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+          petOk?.forEach((item) => {
+            let flexDiv = document.createElement("div");
+            let wrapperDiv = document.createElement("div");
+            let textDiv = document.createElement("div");
+            let name = document.createElement("h1");
+            let address = document.createElement("p");
+            let date = document.createElement("p");
+            flexDiv.classList.add("detailflex");
+            wrapperDiv.classList.add("detailtitle");
+            textDiv.classList.add("detailList");
+            name.textContent = item.ldgs_nm;
+            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.ldgs_addr}`;
+            date.innerHTML = `<p style="font-size: 1.5rem;">기타정보</p> ${item.pet_info_cn}`;
+            contenttitle.appendChild(title);
+            contenttext.appendChild(detailtext);
+            wrapperDiv.appendChild(name);
+            textDiv.appendChild(address);
+            textDiv.appendChild(date);
+            flexDiv.appendChild(wrapperDiv);
+            flexDiv.appendChild(textDiv);
+            content.appendChild(flexDiv);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 미술관 데이터
+  const galleryData = () => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let gallery = [];
+        data?.forEach((item) => {
+          item.CTGRY_THREE_NM?.includes("미술관") && gallery.push(item);
+        });
+        console.log("미술관", gallery);
+        // console.log(data);
+        const content = document.querySelector(".content");
+        const contenttitle = document.querySelector(".detail-title");
+        const contenttext = document.querySelector(".detail-text");
+        let title;
+        let detailtext;
+        if (clickedDataId === "미술관") {
+          title = document.createElement("div");
+          title.textContent = "미술관";
+          detailtext = document.createElement("div");
+          detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+          gallery?.forEach((item) => {
+            let flexDiv = document.createElement("div");
+            let wrapperDiv = document.createElement("div");
+            let textDiv = document.createElement("div");
+            let name = document.createElement("h1");
+            let type = document.createElement("p");
+            let address = document.createElement("p");
+            let facility = document.createElement("p");
+            let open = document.createElement("p");
+            let closed = document.createElement("P");
+            // let date = document.createElement("p");
+            flexDiv.classList.add("detailflex");
+            wrapperDiv.classList.add("detailtitle");
+            textDiv.classList.add("detailList");
+            name.textContent = item.FCLTY_NM;
+            type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
+            facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
+            open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
+            closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
+            // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
+
+            contenttitle.appendChild(title);
+            contenttext.appendChild(detailtext);
+            wrapperDiv.appendChild(name);
+            textDiv.appendChild(type);
+            textDiv.appendChild(address);
+            textDiv.appendChild(facility);
+            textDiv.appendChild(open);
+            textDiv.appendChild(closed);
+            // textDiv.appendChild(date);
+            flexDiv.appendChild(wrapperDiv);
+            flexDiv.appendChild(textDiv);
+            content.appendChild(flexDiv);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
   switch (clickedDataId) {
     case "음식점":
       foodData();
