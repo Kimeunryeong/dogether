@@ -40,6 +40,7 @@
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  font-weight: bold;
 }
 /* footer */
 #footer {
@@ -73,4 +74,8 @@ ol img {
 
 #information ol li:nth-child(1) {
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+
 }
