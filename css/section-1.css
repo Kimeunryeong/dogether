@@ -10,7 +10,7 @@
 .section-1-container {
   width: 100%;
   height: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   padding: 0 1rem;
   margin: 0 auto;
   display: flex;
@@ -26,14 +26,17 @@
 }
 /* LET'S DOGETHER */
 .section-1-container p:nth-child(1) {
-  font-size: 5rem;
+  font-size: 6rem;
   transition: var(--font-transition);
   font-weight: bold;
   color: #14471e;
-  margin-bottom: 10px;
+  margin-bottom: 20px;  
+  font-family: "yg-jalnan";
 }
 .section-1-container p:nth-child(2) {
   font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 .section-1-container P:nth-child(2) b {
   font-size: 2rem;

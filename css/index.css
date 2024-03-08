@@ -32,7 +32,7 @@ a {
   color: inherit;
 }
 body {
-  font-family: "NotoSansKR-Regular";
+  font-family: "IBMPlexSansKR-Regular";
   background-color: #FDF6EB;
 
 }
@@ -42,8 +42,21 @@ body {
   --width-transition: width 0.5s ease;
 }
 @font-face {
-  font-family: "DNFBitBitv2";
-  src: url("../fonts/DNFBitBitv2.ttf") format("truetype");
+  font-family: "Maplestory Bold";
+  src: url("../fonts/Maplestory\ Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: "NotoSansKR-Regular";
