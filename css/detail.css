@@ -233,3 +233,4 @@ font-size: 1.25rem;}
 .btn-on {background-color: black; color: white;}
 .prev-btn, .next-btn {padding: 0.5rem; margin: 1rem; background-color: transparent; border: 1px solid #DA6A00; color: #DA6A00;
   border-radius: 10px; cursor: pointer;}
+.selected {font-weight: bold; color: #DA6A00;}
