@@ -12,9 +12,9 @@
   justify-content: space-between;
   align-items: center;
 }
-input {
+/* input {
   display: none;
-}
+} */
 #logo img {
   width: 4rem;
   transition: var(--width-transition);

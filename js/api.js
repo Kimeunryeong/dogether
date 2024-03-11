@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
       wrapperDiv.classList.add("detailtitle");
       textDiv.classList.add("detailList");
       name.textContent = item.FCLTY_NM;
-      type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+      type.innerHTML = `<p style="font-size: 1.5rem;">종류</p> ${item.FCLTY_INFO_DC}`;
       address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
       facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
       open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
@@ -639,11 +639,11 @@ document.addEventListener("DOMContentLoaded", function () {
       wrapperDiv.classList.add("detailtitle");
       textDiv.classList.add("detailList");
       name.textContent = item.FCLTY_NM;
-      type.innerHTML = `<p class="title" style="font-size: 1.5rem;">종류</p> ${item.FCLTY_INFO_DC}`;
-      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
+      type.innerHTML = `<p class="title" style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+      address.innerHTML = `<p style="font-size: 1.5rem; display: flex; align-items: center;"><img src="./images/map.png" alt="" />주소</p> ${item.LNM_ADDR}`;
       facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
-      open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
-      closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
+      open.innerHTML = `<p style="font-size: 1.5rem; display: flex; align-items: center; "><img src="./images/open.png" alt="" />영업시간</p> ${item.OPER_TIME}`;
+      closed.innerHTML = `<p style="font-size: 1.5rem; display: flex; align-items: center; "><img src="./images/closed.png" alt="" />휴무일</p> ${item.RSTDE_GUID_CN}`;
       // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
 
       wrapperDiv.appendChild(name);
