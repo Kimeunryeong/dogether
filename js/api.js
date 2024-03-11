@@ -1,3 +1,4 @@
+let addressArray = [];
 const serviceKey = "b26f3923-0250-4ed3-8329-54b04f6af8a2";
 document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
