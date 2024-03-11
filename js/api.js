@@ -657,20 +657,33 @@ document.addEventListener("DOMContentLoaded", function () {
   switch (clickedDataId) {
     case "음식점":
       foodData();
+      input.value = "애견동반 식당";
       break;
     case "숙소":
+      input.value = "애견동반 숙소";
       hotelData();
       break;
     case "미술관":
+      input.value = "애견동반 미술관";
       galleryData();
       break;
     case "카페":
+      input.value = "애견동반 카페";
+      cafeData();
+      break;
+    case "미용":
+      input.value = "애견미용실";
+      cafeData();
+      break;
+    case "병원":
+      input.value = "동물병원";
       cafeData();
       break;
     case "미용":
       hairData();
       break;
     default:
+      input.value = "애견동반";
       console.log("");
   }
 });
