@@ -1,7 +1,6 @@
 #section-1 {
   width: 100%;
   height: calc(100vh - 100px);
-  /* height: 100vh; */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -9,7 +8,7 @@
 }
 /* 메인 컨테이너 */
 .section-1-container {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   max-width: 1280px;
   padding: 0 1rem;

@@ -75,3 +75,11 @@ ol img {
 #information ol li:nth-child(1) {
   margin-bottom: 20px;
 }
+
+/* 480px 까지 ul부분 패딩 삭제코드 */
+@media screen and (max-width: 480px) {
+  .guide_container ul {
+    padding: 0px;
+  }
+  
+}
