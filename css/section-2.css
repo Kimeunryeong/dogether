@@ -7,14 +7,13 @@
   background: url("../images/graydog.png");
   background-position: left bottom;
   background-repeat: no-repeat;
-  
 }
 
 .section-2-container {
   width: 100%;
   height: 100%;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 100px auto;
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
@@ -31,17 +30,16 @@
   text-align: center;
   padding: 0 1rem;
 }
-.section-2-main-text p:nth-child(2){
+.section-2-main-text p:nth-child(2) {
   font-size: 2rem;
   color: #ee9b01;
-
-  
 }
 
 .listbox {
   width: 50%;
   display: flex;
   justify-content: center;
+  word-break: keep-all;
 }
 
 .section-2-list {
@@ -54,20 +52,19 @@
 .section-2-list div {
   width: 100%;
   padding: 10px;
+  margin-bottom: 50px;
+  height: 150px;
 }
 
 .section-2-list i {
   color: #ee9b01;
   font-size: 2rem;
 }
-.section-2-list div {
-  margin-bottom: 50px;
-}
 
 .sub-title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .sub-text {
   font-size: 1.1rem;
@@ -83,13 +80,19 @@
     width: 100%;
     margin-bottom: 100px;
   }
+  .section-2-list {
+    width: 100%;
+  }
   .listbox {
     width: 100%;
   }
   .section-2-main-text p {
-    font-size: 4rem;
+    font-size: 3rem;
   }
-  .section-2-list div{
+  .section-2-list div {
     text-align: center;
+  }
+  .sub-title {
+    font-size: 1.8rem;
   }
 }
