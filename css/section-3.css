@@ -3,9 +3,11 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  background-image:url("../images/section-3-bg2.png");
+  background-image: url("../images/yellowdog.png");
   background-repeat: no-repeat;
-  background-position:right bottom;
+  background-position: right bottom;
+  margin-bottom: 100px;
+  justify-content: center;
 
 }
 /* max-width 1024px 설정 */
@@ -14,12 +16,10 @@
   max-width: 1280px;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 100;
-  
 }
 .main-text3 {
   display: flex;
@@ -28,7 +28,7 @@
   width: 50%;
 }
 .title-list3 {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: bold;
 }
 .text-center {
@@ -41,7 +41,8 @@
 .listflex3 {
   display: flex;
   width: 50%;
-  justify-content: center; align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 /* 메인 컨테이너 */
 .section-3-list {
@@ -64,6 +65,7 @@
 .subtext3 {
   margin-bottom: 50px;
   font-size: 1rem;
+  word-break: keep-all;
 }
 
 @media screen and (max-width: 500px) {
@@ -80,26 +82,24 @@
     padding-bottom: 1rem;
   }
   .title-list3 {
-    font-size: 1.7rem;
+    font-size: 3rem;
+    word-break: keep-all;
   }
-
 }
-
 
 @media screen and (max-width: 1024px) {
   .maxsection-3 {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    
   }
   .main-text3 {
     width: 100%;
-    margin-bottom: 100px;
+    margin: 100px auto;
   }
-  
 
   .listflex3 {
     width: 100%;
+    margin-bottom: 100px;
   }
 }

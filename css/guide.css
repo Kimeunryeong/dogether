@@ -76,6 +76,10 @@ ol img {
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 1024px) {
-
+/* 480px 까지 ul부분 패딩 삭제코드 */
+@media screen and (max-width: 480px) {
+  .guide_container ul {
+    padding: 0px;
+  }
+  
 }
