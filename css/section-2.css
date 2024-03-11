@@ -1,17 +1,18 @@
 /* 섹션-2*/
 #section-2 {
   width: 100%;
-  height: 100vh;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   background: url("../images/graydog.png");
   background-position: left bottom;
   background-repeat: no-repeat;
+  margin-top: 100px;
 }
 
 .section-2-container {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   max-width: 1280px;
   margin: 100px auto;
   padding: 0 1rem;
@@ -29,6 +30,7 @@
   font-family: "yg-jalnan";
   text-align: center;
   padding: 0 1rem;
+  transition: opacity 1s ease;
 }
 .section-2-main-text p:nth-child(2) {
   font-size: 2rem;
@@ -52,13 +54,13 @@
 .section-2-list div {
   width: 100%;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   height: 150px;
 }
 
 .section-2-list i {
   color: #ee9b01;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .sub-title {
@@ -91,6 +93,9 @@
   }
   .section-2-list div {
     text-align: center;
+    margin-bottom: 30px;
+    height: 160px
+
   }
   .sub-title {
     font-size: 1.8rem;
