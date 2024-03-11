@@ -112,6 +112,7 @@ body::after {
   margin-bottom: 20px;
 }
 
+
 /* map */
 .map_wrap,
 .map_wrap * {
@@ -282,23 +283,33 @@ body::after {
   cursor: pointer;
   background-color: transparent;
 }
-.btn-on {
-  background-color: black;
-  color: white;
+.page-btn:hover {
+  background-color: #F0A646;
+  color:white;
+  border-radius: 15%;
 }
+
+.btn-on {
+  color: #F0A646;
+  font-weight: bold;
+}
+
 .prev-btn,
 .next-btn {
   padding: 0.5rem;
   margin: 1rem;
   background-color: transparent;
-  border: 1px solid #da6a00;
-  color: #da6a00;
+  color: #F0A646;
   border-radius: 10px;
   cursor: pointer;
 }
+.prev-btn:hover, .next-btn:hover {
+  background-color: #F0A646;
+  color: white;
+}
 .selected {
   font-weight: bold;
-  color: #da6a00;
+  color: #F0A646;
 }
 
 @media screen and (max-width: 600px) {
