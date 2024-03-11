@@ -487,10 +487,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
       });
   };
-  // 카페 데이터 렌더링 함수
+  // 미술관 데이터 렌더링 함수
   const rendergalleryData = (data) => {
     const content = document.querySelector(".content");
-    content.innerHTML = ""; // 기존 카페 데이터 초기화
+    content.innerHTML = ""; // 기존 미술관 데이터 초기화
     // 미술관 디테일
     data.forEach((item) => {
       let flexDiv = document.createElement("div");
@@ -527,6 +527,267 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
+  // 병원&약국 데이터
+  const hairData = () => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hair = [];
+        data?.forEach((item) => {
+          item.CTGRY_THREE_NM?.includes("미용") && hair.push(item);
+        });
+        console.log("미용", hair);
+        const totalPages = Math.ceil(hair.length / PAGE_SIZE); // 전체 페이지 수 계산
+        renderhairPageButtons(totalPages, 1); // 페이지 버튼 렌더링
+        renderhairData(hair.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+        // 타이틀과 디테일 텍스트 추가
+        const title = document.createElement("div");
+        title.textContent = "미용";
+        const detailtext = document.createElement("div");
+        detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+        const contenttitle = document.querySelector(".detail-title");
+        const contenttext = document.querySelector(".detail-text");
+        contenttitle.appendChild(title);
+        contenttext.appendChild(detailtext);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 페이지 버튼 렌더링 함수
+  const renderhairPageButtons = (totalPages, currentPage) => {
+    const pageContainer = document.querySelector(".page-container");
+    pageContainer.innerHTML = ""; // 기존 페이지 버튼 초기화
+
+    // 시작 페이지와 끝 페이지 계산
+    let startPage = Math.max(currentPage - 5, 1);
+    let endPage = Math.min(startPage + 9, totalPages);
+    // 이전 버튼
+    if (currentPage > 1) {
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "이전";
+      prevButton.addEventListener("click", () =>
+        requesthairPage(currentPage - 1)
+      );
+      pageContainer.appendChild(prevButton);
+      prevButton.classList.add("prev-btn");
+    }
+    // 페이지 버튼 생성
+    for (let i = startPage; i <= endPage; i++) {
+      const button = document.createElement("button");
+      button.textContent = i;
+      button.addEventListener("click", () => requesthairPage(i));
+      button.classList.add("page-btn"); // 페이지 버튼에 CSS 클래스 추가
+      if (i === currentPage) {
+        button.classList.add("btn-on"); // 현재 페이지 버튼에 추가 CSS 클래스
+      }
+      pageContainer.appendChild(button);
+    }
+    // 다음 버튼
+    if (currentPage < totalPages) {
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "다음";
+      nextButton.addEventListener("click", () =>
+        requesthairPage(currentPage + 1)
+      );
+      pageContainer.appendChild(nextButton);
+      nextButton.classList.add("next-btn");
+    }
+  };
+  // 페이지 데이터 요청 함수
+  const requesthairPage = (page) => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hair = [];
+        data?.forEach((item) => {
+          item.CTGRY_THREE_NM?.includes("미용") && hair.push(item);
+        });
+        console.log("미용", hair);
+
+        // 요청할 페이지의 데이터 가져오기
+        const startIndex = (page - 1) * PAGE_SIZE;
+        const endIndex = startIndex + PAGE_SIZE;
+        const pageData = hair.slice(startIndex, endIndex);
+
+        // 페이지 버튼 재렌더링 및 데이터 렌더링
+        renderhairPageButtons(Math.ceil(hair.length / PAGE_SIZE), page);
+        renderhairData(pageData);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 병원&약국 데이터 렌더링 함수
+  const renderhairData = (data) => {
+    const content = document.querySelector(".content");
+    content.innerHTML = ""; // 기존 병원&약국 데이터 초기화
+    // 병원&약국 디테일
+    data.forEach((item) => {
+      let flexDiv = document.createElement("div");
+      let wrapperDiv = document.createElement("div");
+      let textDiv = document.createElement("div");
+      let name = document.createElement("h1");
+      let type = document.createElement("p");
+      let address = document.createElement("p");
+      let facility = document.createElement("p");
+      let open = document.createElement("p");
+      let closed = document.createElement("P");
+      // let date = document.createElement("p");
+      flexDiv.classList.add("detailflex");
+      wrapperDiv.classList.add("detailtitle");
+      textDiv.classList.add("detailList");
+      name.textContent = item.FCLTY_NM;
+      type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
+      facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
+      open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
+      closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
+      // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
+
+      wrapperDiv.appendChild(name);
+      textDiv.appendChild(type);
+      textDiv.appendChild(address);
+      textDiv.appendChild(facility);
+      textDiv.appendChild(open);
+      textDiv.appendChild(closed);
+      // textDiv.appendChild(date);
+      flexDiv.appendChild(wrapperDiv);
+      flexDiv.appendChild(textDiv);
+      content.appendChild(flexDiv);
+    });
+  };
+
+  // 병원&약국 데이터
+  const hospitalData = () => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hospital = [];
+        data?.forEach((item) => {
+          item.CTGRY_TWO_NM?.includes("반려의료") && hospital.push(item);
+        });
+        console.log("병원&약국", hospital);
+        const totalPages = Math.ceil(hospital.length / PAGE_SIZE); // 전체 페이지 수 계산
+        renderhospitalPageButtons(totalPages, 1); // 페이지 버튼 렌더링
+        renderhospitalData(hospital.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+        // 타이틀과 디테일 텍스트 추가
+        const title = document.createElement("div");
+        title.textContent = "병원&약국";
+        const detailtext = document.createElement("div");
+        detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+        const contenttitle = document.querySelector(".detail-title");
+        const contenttext = document.querySelector(".detail-text");
+        contenttitle.appendChild(title);
+        contenttext.appendChild(detailtext);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 페이지 버튼 렌더링 함수
+  const renderhospitalPageButtons = (totalPages, currentPage) => {
+    const pageContainer = document.querySelector(".page-container");
+    pageContainer.innerHTML = ""; // 기존 페이지 버튼 초기화
+
+    // 시작 페이지와 끝 페이지 계산
+    let startPage = Math.max(currentPage - 5, 1);
+    let endPage = Math.min(startPage + 9, totalPages);
+    // 이전 버튼
+    if (currentPage > 1) {
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "이전";
+      prevButton.addEventListener("click", () =>
+        requesthospitalPage(currentPage - 1)
+      );
+      pageContainer.appendChild(prevButton);
+      prevButton.classList.add("prev-btn");
+    }
+    // 페이지 버튼 생성
+    for (let i = startPage; i <= endPage; i++) {
+      const button = document.createElement("button");
+      button.textContent = i;
+      button.addEventListener("click", () => requesthospitalPage(i));
+      button.classList.add("page-btn"); // 페이지 버튼에 CSS 클래스 추가
+      if (i === currentPage) {
+        button.classList.add("btn-on"); // 현재 페이지 버튼에 추가 CSS 클래스
+      }
+      pageContainer.appendChild(button);
+    }
+    // 다음 버튼
+    if (currentPage < totalPages) {
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "다음";
+      nextButton.addEventListener("click", () =>
+        requesthospitalPage(currentPage + 1)
+      );
+      pageContainer.appendChild(nextButton);
+      nextButton.classList.add("next-btn");
+    }
+  };
+  // 페이지 데이터 요청 함수
+  const requesthospitalPage = (page) => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hospital = [];
+        data?.forEach((item) => {
+          item.CTGRY_TWO_NM?.includes("반려의료") && hospital.push(item);
+        });
+        console.log("병원&약국", hospital);
+
+        // 요청할 페이지의 데이터 가져오기
+        const startIndex = (page - 1) * PAGE_SIZE;
+        const endIndex = startIndex + PAGE_SIZE;
+        const pageData = hospital.slice(startIndex, endIndex);
+
+        // 페이지 버튼 재렌더링 및 데이터 렌더링
+        renderhospitalPageButtons(Math.ceil(hospital.length / PAGE_SIZE), page);
+        renderhospitalData(pageData);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 병원&약국 데이터 렌더링 함수
+  const renderhospitalData = (data) => {
+    const content = document.querySelector(".content");
+    content.innerHTML = ""; // 기존 병원&약국 데이터 초기화
+    // 병원&약국 디테일
+    data.forEach((item) => {
+      let flexDiv = document.createElement("div");
+      let wrapperDiv = document.createElement("div");
+      let textDiv = document.createElement("div");
+      let name = document.createElement("h1");
+      let type = document.createElement("p");
+      let address = document.createElement("p");
+      let facility = document.createElement("p");
+      let open = document.createElement("p");
+      let closed = document.createElement("P");
+      // let date = document.createElement("p");
+      flexDiv.classList.add("detailflex");
+      wrapperDiv.classList.add("detailtitle");
+      textDiv.classList.add("detailList");
+      name.textContent = item.FCLTY_NM;
+      type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
+      facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
+      open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
+      closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
+      // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
+
+      wrapperDiv.appendChild(name);
+      textDiv.appendChild(type);
+      textDiv.appendChild(address);
+      textDiv.appendChild(facility);
+      textDiv.appendChild(open);
+      textDiv.appendChild(closed);
+      // textDiv.appendChild(date);
+      flexDiv.appendChild(wrapperDiv);
+      flexDiv.appendChild(textDiv);
+      content.appendChild(flexDiv);
+    });
+  };
   switch (clickedDataId) {
     case "음식점":
       foodData();
@@ -546,14 +807,11 @@ document.addEventListener("DOMContentLoaded", function () {
       break;
     case "미용":
       input.value = "애견미용실";
-      cafeData();
+      hairData();
       break;
     case "병원":
       input.value = "동물병원";
-      cafeData();
-      break;
-    case "미용":
-      hairData();
+      hospitalData();
       break;
     default:
       input.value = "애견동반";
