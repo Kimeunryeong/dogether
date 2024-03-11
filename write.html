@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link href="css/header.css" rel="stylesheet" type="text/css" />
+    <link href="css/write.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <title>BOARD</title>
+</head>
+<body>
+    <header>
+        <script>
+        fetch("header.html")
+            .then((response) => response.text())
+            .then((html) => {
+            document.querySelector("header").innerHTML = html;
+            });
+        </script>
+    </header>
+    <section class="section-1-write">
+        <div class="section-1-container">
+            <form id="form">
+                <input id="title" type="text" placeholder="제목을 입력하세요"/>
+                <textarea id="content" rows="20" placeholder="내용을 입력하세요"></textarea>
+                <div>
+                    <a class="button" href="community.html">목록</a>
+                    <button class="button" id="submit" type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- js -->
+    <script src="js/write.js"></script>
+</body>
+</html>
