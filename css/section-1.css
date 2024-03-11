@@ -45,7 +45,7 @@
   color: #f0a646;
 }
 .section-1-container p:nth-child(3) {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: gray;
   transition: var(--font-transition);
 }
