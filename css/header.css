@@ -129,8 +129,13 @@ label {
     z-index: 500;
   }
 
+  #side_menu {
+    font-size: 20px;
+  }
+
   .sub {
     display: none;
+    font-size: 17px;
 }
 
 #side_menu > ul > li:hover > ul {
