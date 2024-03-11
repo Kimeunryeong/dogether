@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const renderDetail = (data) => {
     const content = document.querySelector(".content");
     content.innerHTML = ""; // 기존 데이터 삭제
-    
+
     data?.forEach((item) => {
       let flexDiv = document.createElement("div");
       let wrapperDiv = document.createElement("div");
@@ -346,11 +346,11 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("../json/hotel.json")
       .then((response) => response.json())
       .then((data) => {
-        let petOk  = [];
+        let petOk = [];
         data?.forEach((item) => {
           item.pet_info_cn?.includes("반려동물 동반 가능") && petOk.push(item);
         });
-        console.log("반려동물 동반 가능", petOk );
+        console.log("반려동물 동반 가능", petOk);
 
         // 요청할 페이지의 데이터 가져오기
         const startIndex = (page - 1) * PAGE_SIZE;
@@ -369,33 +369,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const renderhotelData = (data) => {
     const content = document.querySelector(".content");
     content.innerHTML = ""; // 기존 카페 데이터 초기화
-        // 호텔 디테일
-        data.forEach((item) => {
-            let flexDiv = document.createElement("div");
-            let wrapperDiv = document.createElement("div");
-            let textDiv = document.createElement("div");
-            let name = document.createElement("h1");
-            let address = document.createElement("p");
-            let date = document.createElement("p");
+    // 호텔 디테일
+    data.forEach((item) => {
+      let flexDiv = document.createElement("div");
+      let wrapperDiv = document.createElement("div");
+      let textDiv = document.createElement("div");
+      let name = document.createElement("h1");
+      let address = document.createElement("p");
+      let date = document.createElement("p");
 
-            flexDiv.classList.add("detailflex");
-            wrapperDiv.classList.add("detailtitle");
-            textDiv.classList.add("detailList");
+      flexDiv.classList.add("detailflex");
+      wrapperDiv.classList.add("detailtitle");
+      textDiv.classList.add("detailList");
 
-            name.textContent = item.ldgs_nm;
-            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.ldgs_addr}`;
-            date.innerHTML = `<p style="font-size: 1.5rem;">기타정보</p> ${item.pet_info_cn}`;
-            wrapperDiv.appendChild(name);
+      name.textContent = item.ldgs_nm;
+      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.ldgs_addr}`;
+      date.innerHTML = `<p style="font-size: 1.5rem;">기타정보</p> ${item.pet_info_cn}`;
+      wrapperDiv.appendChild(name);
 
-            textDiv.appendChild(address);
-            textDiv.appendChild(date);
+      textDiv.appendChild(address);
+      textDiv.appendChild(date);
 
-            flexDiv.appendChild(wrapperDiv);
-            flexDiv.appendChild(textDiv);
+      flexDiv.appendChild(wrapperDiv);
+      flexDiv.appendChild(textDiv);
 
-            content.appendChild(flexDiv);
-          });
-        }
+      content.appendChild(flexDiv);
+    });
+  };
 
   // 미술관 데이터
   const galleryData = () => {
@@ -407,10 +407,10 @@ document.addEventListener("DOMContentLoaded", function () {
           item.CTGRY_THREE_NM?.includes("미술관") && gallery.push(item);
         });
         console.log("미술관", gallery);
-        
-        const totalPages = Math.ceil( gallery.length / PAGE_SIZE); // 전체 페이지 수 계산
+
+        const totalPages = Math.ceil(gallery.length / PAGE_SIZE); // 전체 페이지 수 계산
         renderPageButtons2(totalPages, 1); // 페이지 버튼 렌더링
-        rendergalleryData( gallery.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+        rendergalleryData(gallery.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
         // 타이틀과 디테일 텍스트 추가
         const title = document.createElement("div");
         title.textContent = "미술관";
@@ -453,8 +453,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       pageContainer.appendChild(button);
     }
-     // 다음 버튼
-     if (currentPage < totalPages) {
+    // 다음 버튼
+    if (currentPage < totalPages) {
       const nextButton = document.createElement("button");
       nextButton.textContent = "다음";
       nextButton.addEventListener("click", () => requestPage2(currentPage + 1));
@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("../json/cafe.json")
       .then((response) => response.json())
       .then((data) => {
-        let gallery  = [];
+        let gallery = [];
         data?.forEach((item) => {
           item.CTGRY_THREE_NM?.includes("미술관") && gallery.push(item);
         });
@@ -490,42 +490,170 @@ document.addEventListener("DOMContentLoaded", function () {
   const rendergalleryData = (data) => {
     const content = document.querySelector(".content");
     content.innerHTML = ""; // 기존 카페 데이터 초기화
-        // 미술관 디테일
-        data.forEach((item) => {
-            let flexDiv = document.createElement("div");
-            let wrapperDiv = document.createElement("div");
-            let textDiv = document.createElement("div");
-            let name = document.createElement("h1");
-            let type = document.createElement("p");
-            let address = document.createElement("p");
-            let facility = document.createElement("p");
-            let open = document.createElement("p");
-            let closed = document.createElement("P");
-            // let date = document.createElement("p");
-            flexDiv.classList.add("detailflex");
-            wrapperDiv.classList.add("detailtitle");
-            textDiv.classList.add("detailList");
-            name.textContent = item.FCLTY_NM;
-            type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
-            address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
-            facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
-            open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
-            closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
-            // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
+    // 미술관 디테일
+    data.forEach((item) => {
+      let flexDiv = document.createElement("div");
+      let wrapperDiv = document.createElement("div");
+      let textDiv = document.createElement("div");
+      let name = document.createElement("h1");
+      let type = document.createElement("p");
+      let address = document.createElement("p");
+      let facility = document.createElement("p");
+      let open = document.createElement("p");
+      let closed = document.createElement("P");
+      // let date = document.createElement("p");
+      flexDiv.classList.add("detailflex");
+      wrapperDiv.classList.add("detailtitle");
+      textDiv.classList.add("detailList");
+      name.textContent = item.FCLTY_NM;
+      type.innerHTML = `<p style="font-size: 1.5rem; ">종류</p> ${item.FCLTY_INFO_DC}`;
+      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.LNM_ADDR}`;
+      facility.innerHTML = `<p style="font-size: 1.5rem; ">시설정보설명</p> ${item.FCLTY_INFO_DC}`;
+      open.innerHTML = `<p style="font-size: 1.5rem; ">영업시간</p> ${item.OPER_TIME}`;
+      closed.innerHTML = `<p style="font-size: 1.5rem; ">휴무일</p> ${item.RSTDE_GUID_CN}`;
+      // date.textContent = `<p style="font-size: 1.5rem; ">기타정보</p> ${item.pet_info_cn}`;
 
-            wrapperDiv.appendChild(name);
-            textDiv.appendChild(type);
-            textDiv.appendChild(address);
-            textDiv.appendChild(facility);
-            textDiv.appendChild(open);
-            textDiv.appendChild(closed);
-            // textDiv.appendChild(date);
-            flexDiv.appendChild(wrapperDiv);
-            flexDiv.appendChild(textDiv);
-            content.appendChild(flexDiv);
-          });
-        }
-    
+      wrapperDiv.appendChild(name);
+      textDiv.appendChild(type);
+      textDiv.appendChild(address);
+      textDiv.appendChild(facility);
+      textDiv.appendChild(open);
+      textDiv.appendChild(closed);
+      // textDiv.appendChild(date);
+      flexDiv.appendChild(wrapperDiv);
+      flexDiv.appendChild(textDiv);
+      content.appendChild(flexDiv);
+    });
+  };
+  // 미용 데이터
+  const hairData = () => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hair = [];
+        data?.forEach((item) => {
+          item.CTGRY_THREE_NM?.includes("미용") && hair.push(item);
+        });
+        console.log("미용", hair);
+
+        const totalPages = Math.ceil(hair.length / PAGE_SIZE); // 전체 페이지 수 계산
+        renderHairPageButtons(totalPages, 1); // 페이지 버튼 렌더링
+        renderHairData(hair.slice(0, PAGE_SIZE)); // 초기 페이지 데이터 렌더링
+        // 타이틀과 디테일 텍스트 추가
+        const title = document.createElement("div");
+        title.textContent = "미용";
+        const detailtext = document.createElement("div");
+        detailtext.textContent = `나와 가까운 ${title.textContent}을(를) 검색해보세요.`;
+        const contenttitle = document.querySelector(".detail-title");
+        const contenttext = document.querySelector(".detail-text");
+        contenttitle.appendChild(title);
+        contenttext.appendChild(detailtext);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  // 페이지 버튼 렌더링 함수
+  const renderHairPageButtons = (totalPages, currentPage) => {
+    const pageContainer = document.querySelector(".page-container");
+    pageContainer.innerHTML = ""; // 기존 페이지 버튼 초기화
+
+    // 시작 페이지와 끝 페이지 계산
+    let startPage = Math.max(currentPage - 5, 1);
+    let endPage = Math.min(startPage + 9, totalPages);
+
+    // 이전 버튼
+    if (currentPage > 1) {
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "이전";
+      prevButton.addEventListener("click", () =>
+        requestHairPage(currentPage - 1)
+      );
+      pageContainer.appendChild(prevButton);
+      prevButton.classList.add("prev-btn");
+    }
+    // 페이지 버튼 생성
+    for (let i = startPage; i <= endPage; i++) {
+      const button = document.createElement("button");
+      button.textContent = i;
+      button.addEventListener("click", () => requestHairPage(i));
+      button.classList.add("page-btn"); // 페이지 버튼에 CSS 클래스 추가
+      if (i === currentPage) {
+        button.classList.add("btn-on"); // 현재 페이지 버튼에 추가 CSS 클래스
+      }
+      pageContainer.appendChild(button);
+    }
+    // 다음 버튼
+    if (currentPage < totalPages) {
+      const nextButton = document.createElement("button");
+      nextButton.textContent = "다음";
+      nextButton.addEventListener("click", () =>
+        requestHairPage(currentPage + 1)
+      );
+      pageContainer.appendChild(nextButton);
+      nextButton.classList.add("next-btn");
+    }
+  };
+  // 페이지 데이터 요청 함수
+  const requestHairPage = (page) => {
+    fetch("../json/cafe.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let hair = [];
+        data?.forEach((item) => {
+          item.CTGRY_THREE_NM?.includes("미용") && hair.push(item);
+        });
+        console.log("미용", hair);
+
+        // 요청할 페이지의 데이터 가져오기
+        const startIndex = (page - 1) * PAGE_SIZE;
+        const endIndex = startIndex + PAGE_SIZE;
+        const pageData = hair.slice(startIndex, endIndex);
+
+        // 페이지 버튼 재렌더링 및 데이터 렌더링
+        renderHairPageButtons(Math.ceil(hair.length / PAGE_SIZE), page);
+        renderHairData(pageData);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 도중 에러가 발생했습니다:", error);
+      });
+  };
+  //  데이터 렌더링 함수
+  const renderHairData = (data) => {
+    const content = document.querySelector(".content");
+    content.innerHTML = ""; // 기존 카페 데이터 초기화
+    // 미용 디테일
+    data.forEach((item) => {
+      let flexDiv = document.createElement("div");
+      let wrapperDiv = document.createElement("div");
+      let textDiv = document.createElement("div");
+      let name = document.createElement("h1");
+      let address = document.createElement("p");
+      let date = document.createElement("p");
+      let opens = document.createElement("p");
+      let closed = document.createElement("p");
+
+      flexDiv.classList.add("detailflex");
+      wrapperDiv.classList.add("detailtitle");
+      textDiv.classList.add("detailList");
+
+      name.textContent = item.FCLTY_NM;
+      address.innerHTML = `<p style="font-size: 1.5rem; ">주소</p> ${item.RDNMADR_NM}`;
+      opens.innerHTML = `<p style="font-size: 1.5rem;">영업시간</p> ${item.OPER_TIME}`;
+      closed.innerHTML = `<p style="font-size: 1.5rem;">휴무일</p> ${item.RSTDE_GUID_CN}`;
+      date.innerHTML = `<p style="font-size: 1.5rem;">기타정보</p> ${item.FCLTY_INFO_DC}`;
+      wrapperDiv.appendChild(name);
+
+      textDiv.appendChild(address);
+      textDiv.appendChild(opens);
+      textDiv.appendChild(closed);
+      textDiv.appendChild(date);
+      flexDiv.appendChild(wrapperDiv);
+      flexDiv.appendChild(textDiv);
+
+      content.appendChild(flexDiv);
+    });
+  };
   switch (clickedDataId) {
     case "음식점":
       foodData();
@@ -538,6 +666,9 @@ document.addEventListener("DOMContentLoaded", function () {
       break;
     case "카페":
       cafeData();
+      break;
+    case "미용":
+      hairData();
       break;
     default:
       console.log("");
