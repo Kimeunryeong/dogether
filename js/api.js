@@ -814,7 +814,6 @@ document.addEventListener("DOMContentLoaded", function () {
       hospitalData();
       break;
     default:
-      input.value = "애견동반";
       console.log("");
   }
 });

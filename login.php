@@ -5,9 +5,9 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 데이터베이스 연결 설정
     $servername = "localhost";
-    $username = "jae";
-    $password = "1596";
-    $dbname = "test";
+    $username = "admin";
+    $password = "admin";
+    $dbname = "dogether";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
