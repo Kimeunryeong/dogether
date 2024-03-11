@@ -27,6 +27,65 @@
         </label>
         <input type="checkbox" id="hamburger" />
       </nav>
+      <nav id="menu">
+        <ul>
+          <a href="#">
+            <li>로그인</li>
+          </a>
+          <a href="#">
+            <li>회원가입</li>
+          </a>
+          <a href="#">
+            <li>커뮤니티</li>
+          </a>
+        </ul>
+      </nav>
+      <!-- 토글메뉴 -->
+      <input type="checkbox" id="check_box" />
+      <label for="check_box">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <div id="side_menu">
+        <ul>
+          <li><a href="#">로그인</a></li>
+          <li><a href="#">회원가입</a></li>
+          <li><a href="#">커뮤니티</a></li>
+          <li id="toggleSubmenu">
+            <a href="#">제목을 뭐라고 적을 지 모르겠어요..</a>
+            <ul class="sub">
+              <li><a href="detail.html?dataId=병원">동물병원&약국</a></li>
+              <li><a href="detail.html?dataId=음식점">음식점</a></li>
+              <li><a href="detail.html?dataId=미용">애견 미용샵</a></li>
+              <li><a href="detail.html?dataId=미술관">미술관</a></li>
+              <li><a href="detail.html?dataId=카페">카페</a></li>
+              <li><a href="detail.html?dataId=숙소">숙소</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleSubmenu = document.getElementById("toggleSubmenu");
+        const submenu = document.querySelector("#side_menu.sub");
+
+        toggleSubmenu.addEventListener("click", function (event) {
+          event.preventDefault();
+          submenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function (event) {
+          const isClickInside =
+            toggleSubmenu.contains(event.target) ||
+            submenu.contains(event.target);
+
+          if (!isClickInside) {
+            submenu.classList.remove("show");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
