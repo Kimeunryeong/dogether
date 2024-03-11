@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css" type="text/css" />
+    <link rel="stylesheet" href="css/header.css" type="text/css" />
+    <link rel="stylesheet" href="css/community.css" type="text/css" />
+     <!-- JS -->
+     <script src="./js/jquery-3.7.1.min.js"></script>
+     <script src="./js/list.js" type="module"></script>
+     <!-- 폰트어썸 -->
+     <script src="https://kit.fontawesome.com/96b5911d82.js" crossorigin="anonymous"></script>
+    <title>커뮤니티</title>
+</head>
+<body>
+    <header id="header">
+        <script>
+          fetch("header.html")
+            .then((response) => response.text())
+            .then((html) => {
+              document.querySelector("header").innerHTML = html;
+            });
+        </script>
+      </header>
+      <section class="section-1">
+        <div class="section-1-container">
+            <div class="title">
+                <p><b>COMMUNITY</b></p>
+                <div id="write-button">
+                    <a class="button" href="write.html">
+                        글쓰기
+                    </a>
+                </div>
+            </div>
+            <div class="list-title">
+                <b>번호</b>
+                <b>제목</b>
+                <b>글쓴이</b>
+                <b>등록일</b>
+            </div>
+            <div class="list-content">
+                <div class="list content-num"></div>
+                <div class="list content-title"></div>
+                <div class="list content-writer"></div>
+                <div class="list content-date"></div>
+            </div>
+        </div>
+        <div class="page-container"></div>
+    </section>
+</body>
+</html>
