@@ -1,3 +1,10 @@
+/* section1 이벤트 */
+#section1-event, #section1-event2 {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+
 #section-1 {
   width: 100%;
   height: calc(100vh - 100px);
